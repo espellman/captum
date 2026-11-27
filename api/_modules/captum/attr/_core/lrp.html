@@ -1,35 +1,41 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Captum · Model Interpretability for PyTorch</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Model Interpretability for PyTorch"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Captum · Model Interpretability for PyTorch"/><meta property="og:type" content="website"/><meta property="og:url" content="https://captum.ai/"/><meta property="og:description" content="Model Interpretability for PyTorch"/><meta property="og:image" content="https://captum.ai/img/captum-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://captum.ai/img/captum.png"/><link rel="shortcut icon" href="/img/captum.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!DOCTYPE html>
 
-              ga('create', 'UA-44373548-48', 'auto');
-              ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/code_block_buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
-        document.addEventListener('DOMContentLoaded', function() {
-          addBackToTop(
-            {"zIndex":100}
-          )
-        });
-        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/captum_logo.svg" alt="Captum"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/tutorials/" target="_self">Tutorials</a></li><li class=""><a href="/api/" target="_self">API Reference</a></li><li class=""><a href="https://github.com/pytorch/captum" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div>
-<script type="text/javascript" id="documentation_options" data-url_root="./"
-src="/_sphinx/documentation_options.js"></script>
-<script type="text/javascript" src="/_sphinx/jquery.js"></script>
-<script type="text/javascript" src="/_sphinx/underscore.js"></script>
-<script type="text/javascript" src="/_sphinx/doctools.js"></script>
-<script type="text/javascript" src="/_sphinx/language_data.js"></script>
-<script type="text/javascript" src="/_sphinx/searchtools.js"></script>
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>captum.attr._core.lrp &#8212; Captum  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/katex-math.css?v=05624691" />
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/katex.min.js?v=5cc8ed51"></script>
+    <script src="../../../../_static/auto-render.min.js?v=af98beb9"></script>
+    <script src="../../../../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
 
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-<script src="/_sphinx/katex_autorenderer.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-<div class="sphinx wrapper"><div class="document">
-<div class="documentwrapper">
-<div class="bodywrapper">
-<div class="body" role="main">
-<h1>Source code for captum.attr._core.lrp</h1><div class="highlight"><pre>
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for captum.attr._core.lrp</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="c1"># Copyright (c) Meta Platforms, Inc. and affiliates.</span>
@@ -69,7 +75,7 @@ src="/_sphinx/documentation_options.js"></script>
 <div class="viewcode-block" id="LRP">
 <a class="viewcode-back" href="../../../../lrp.html#captum.attr.LRP">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LRP</span><span class="p">(</span><span class="n">GradientAttribution</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Layer-wise relevance propagation is based on a backward propagation</span>
 <span class="sd">    mechanism applied sequentially to all layers of the model. Here, the</span>
 <span class="sd">    model output score represents the initial relevance which is decomposed</span>
@@ -80,7 +86,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">    inspired by the tutorial of the same group</span>
 <span class="sd">    [https://doi.org/10.1016/j.dsp.2017.10.011] and the publication by</span>
 <span class="sd">    Ancona et al. [https://openreview.net/forum?id=Sy21R9JAW].</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">_original_state_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -89,7 +95,7 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="n">forward_handles</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RemovableHandle</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Module</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 
 <span class="sd">            model (Module): The forward function of the model or any modification of</span>
@@ -97,7 +103,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                `module.rule` and need to be of type PropagationRule. If no rule is</span>
 <span class="sd">                specified for a layer, a pre-defined default rule for the module type</span>
 <span class="sd">                is used.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">GradientAttribution</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_layers_with_added_rules</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -143,7 +149,7 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span>
         <span class="n">TensorOrTupleOfTensorsGeneric</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">TensorOrTupleOfTensorsGeneric</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span>
     <span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 
 <span class="sd">            inputs (Tensor or tuple[Tensor, ...]): Input for which relevance is</span>
@@ -235,7 +241,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                &gt;&gt;&gt; # Attribution size matches input size: 3x3x32x32</span>
 <span class="sd">                &gt;&gt;&gt; attribution = lrp.attribute(input, target=5)</span>
 
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_original_state_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
@@ -287,10 +293,10 @@ src="/_sphinx/documentation_options.js"></script>
 <div class="viewcode-block" id="LRP.attribute_future">
 <a class="viewcode-back" href="../../../../lrp.html#captum.attr.LRP.attribute_future">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">attribute_future</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method is not implemented for LRP.</span>
-<span class="sd">        """</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"attribute_future is not implemented for LRP"</span><span class="p">)</span></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;attribute_future is not implemented for LRP&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LRP.has_convergence_delta">
@@ -304,9 +310,9 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_convergence_delta</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">attributions</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">]],</span> <span class="n">output</span><span class="p">:</span> <span class="n">Tensor</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Here, we use the completeness property of LRP: The relevance is conserved</span>
-<span class="sd">        during the propagation through the models' layers. Therefore, the difference</span>
+<span class="sd">        during the propagation through the models&#39; layers. Therefore, the difference</span>
 <span class="sd">        between the sum of attribution (relevance) values and model output is taken as</span>
 <span class="sd">        the convergence delta. It should be zero for functional attribution. However,</span>
 <span class="sd">        when rules with an epsilon value are used for stability reasons, relevance is</span>
@@ -318,7 +324,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                        are precomputed by an attribution algorithm.</span>
 <span class="sd">                        Attributions can be provided in form of a single tensor</span>
 <span class="sd">                        or a tuple of those. It is assumed that attribution</span>
-<span class="sd">                        tensor's dimension 0 corresponds to the number of</span>
+<span class="sd">                        tensor&#39;s dimension 0 corresponds to the number of</span>
 <span class="sd">                        examples, and if multiple input tensors are provided,</span>
 <span class="sd">                        the examples must be aligned appropriately.</span>
 
@@ -330,7 +336,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">        Returns:</span>
 <span class="sd">            *Tensor*:</span>
 <span class="sd">            - **delta** Difference of relevance in output layer and input layer.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attributions</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attributions</span><span class="p">:</span>
                 <span class="n">summed_attr</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
@@ -351,7 +357,7 @@ src="/_sphinx/documentation_options.js"></script>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_check_and_attach_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s2">"rule"</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s2">&quot;rule&quot;</span><span class="p">):</span>
                 <span class="n">layer</span><span class="o">.</span><span class="n">activations</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: ignore</span>
                 <span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="o">.</span><span class="n">relevance_input</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
                 <span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="o">.</span><span class="n">relevance_output</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: ignore</span>
@@ -368,24 +374,24 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                     <span class="p">(</span>
-                        <span class="sa">f</span><span class="s2">"Module of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span><span class="si">}</span><span class="s2"> has no rule defined and no"</span>
-                        <span class="s2">"default rule exists for this module type. Please, set a rule"</span>
-                        <span class="s2">"explicitly for this module and assure that it is appropriate"</span>
-                        <span class="s2">"for this type of layer."</span>
+                        <span class="sa">f</span><span class="s2">&quot;Module of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span><span class="si">}</span><span class="s2"> has no rule defined and no&quot;</span>
+                        <span class="s2">&quot;default rule exists for this module type. Please, set a rule&quot;</span>
+                        <span class="s2">&quot;explicitly for this module and assure that it is appropriate&quot;</span>
+                        <span class="s2">&quot;for this type of layer.&quot;</span>
                     <span class="p">)</span>
                 <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_check_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">modules</span><span class="p">():</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s2">"rule"</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s2">&quot;rule&quot;</span><span class="p">):</span>
                 <span class="k">if</span> <span class="p">(</span>
                     <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">rule</span><span class="p">,</span> <span class="n">PropagationRule</span><span class="p">)</span>
                     <span class="ow">and</span> <span class="n">module</span><span class="o">.</span><span class="n">rule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
                 <span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                         <span class="p">(</span>
-                            <span class="sa">f</span><span class="s2">"Please select propagation rules inherited from class "</span>
-                            <span class="sa">f</span><span class="s2">"PropagationRule for module: </span><span class="si">{</span><span class="n">module</span><span class="si">}</span><span class="s2">"</span>
+                            <span class="sa">f</span><span class="s2">&quot;Please select propagation rules inherited from class &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;PropagationRule for module: </span><span class="si">{</span><span class="n">module</span><span class="si">}</span><span class="s2">&quot;</span>
                         <span class="p">)</span>
                     <span class="p">)</span>
 
@@ -402,7 +408,7 @@ src="/_sphinx/documentation_options.js"></script>
                 <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">forward_handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">forward_handle</span><span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Applied </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="si">}</span><span class="s2"> on layer </span><span class="si">{</span><span class="n">layer</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Applied </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="si">}</span><span class="s2"> on layer </span><span class="si">{</span><span class="n">layer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_register_weight_hooks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
@@ -437,7 +443,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="bp">self</span><span class="o">.</span><span class="n">_register_pre_hooks</span><span class="p">()</span>
 
         <span class="c1"># _run_forward may return future of Tensor,</span>
-        <span class="c1"># but we don't support it here now</span>
+        <span class="c1"># but we don&#39;t support it here now</span>
         <span class="c1"># And it will fail before here.</span>
         <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
 
@@ -449,20 +455,20 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="k">for</span> <span class="n">backward_handle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">backward_handles</span><span class="p">:</span>
             <span class="n">backward_handle</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="p">,</span> <span class="s2">"_handle_input_hooks"</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="p">,</span> <span class="s2">&quot;_handle_input_hooks&quot;</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">handle</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="o">.</span><span class="n">_handle_input_hooks</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
                     <span class="n">handle</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="p">,</span> <span class="s2">"_handle_output_hook"</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="p">,</span> <span class="s2">&quot;_handle_output_hook&quot;</span><span class="p">):</span>
                 <span class="n">layer</span><span class="o">.</span><span class="n">rule</span><span class="o">.</span><span class="n">_handle_output_hook</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_remove_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layers_with_added_rules</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s2">"rule"</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s2">&quot;rule&quot;</span><span class="p">):</span>
                 <span class="k">del</span> <span class="n">layer</span><span class="o">.</span><span class="n">rule</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_clear_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s2">"activation"</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s2">&quot;activation&quot;</span><span class="p">):</span>
                 <span class="k">del</span> <span class="n">layer</span><span class="o">.</span><span class="n">activation</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_restore_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -476,13 +482,13 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_properties</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_forward_fn_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Wraps a forward function with addition of zero as a workaround to</span>
 <span class="sd">        https://github.com/pytorch/pytorch/issues/35802 discussed in</span>
 <span class="sd">        https://github.com/pytorch/captum/issues/143#issuecomment-611750044</span>
 
 <span class="sd">        #TODO: Remove when bugs are fixed</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">adjusted_inputs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
             <span class="nb">input</span> <span class="o">+</span> <span class="mi">0</span> <span class="k">if</span> <span class="nb">input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">input</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">inputs</span>
         <span class="p">)</span>
@@ -512,19 +518,30 @@ src="/_sphinx/documentation_options.js"></script>
 
 <span class="n">SUPPORTED_NON_LINEAR_LAYERS</span> <span class="o">=</span> <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">]</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div aria-label="Main" class="sphinxsidebar" role="navigation">
-<div class="sphinxsidebarwrapper">
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../../../../index.html">Captum</a></h1>
-<search id="searchbox" role="search" style="display: none">
-<div class="searchformwrapper">
-<form action="../../../../search.html" class="search" method="get">
-<input aria-labelledby="searchlabel" autocapitalize="off" autocomplete="off" autocorrect="off" name="q" placeholder="Search" spellcheck="false" type="text"/>
-<input type="submit" value="Go"/>
-</form>
-</div>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
@@ -542,45 +559,35 @@ src="/_sphinx/documentation_options.js"></script>
 <li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../base_classes.html">Base Classes</a></li>
 </ul>
+
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-<li><a href="../../../../index.html">Documentation overview</a><ul>
-<li><a href="../../../index.html">Module code</a><ul>
-</ul></li>
-</ul></li>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="clearer"></div>
-</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footerSection"><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div class="footerSection"><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/pytorch/captum" data-count-href="https://github.com/pytorch/captum/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Captum on GitHub">captum</a></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright"> Copyright © 2026 Meta Platforms, Inc.</section><script>
-            (function() {
-              var BAD_BASE = '/captum/';
-              if (window.location.origin !== 'https://captum.ai') {
-                var pathname = window.location.pathname;
-                var newPathname = pathname.slice(pathname.indexOf(BAD_BASE) === 0 ? BAD_BASE.length : 1);
-                var newLocation = 'https://captum.ai/' + newPathname;
-                console.log('redirecting to ' + newLocation);
-                window.location.href = newLocation;
-              }
-            })();
-          </script></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
-                document.addEventListener('keyup', function(e) {
-                  if (e.target !== document.body) {
-                    return;
-                  }
-                  // keyCode for '/' (slash)
-                  if (e.keyCode === 191) {
-                    const search = document.getElementById('search_input_react');
-                    search && search.focus();
-                  }
-                });
-              </script><script>
-              var search = docsearch({
-                
-                apiKey: '207c27d819f967749142d8611de7cb19',
-                indexName: 'captum',
-                inputSelector: '#search_input_react'
-              });
-            </script></body></html>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

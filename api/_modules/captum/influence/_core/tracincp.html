@@ -1,35 +1,41 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Captum · Model Interpretability for PyTorch</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Model Interpretability for PyTorch"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Captum · Model Interpretability for PyTorch"/><meta property="og:type" content="website"/><meta property="og:url" content="https://captum.ai/"/><meta property="og:description" content="Model Interpretability for PyTorch"/><meta property="og:image" content="https://captum.ai/img/captum-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://captum.ai/img/captum.png"/><link rel="shortcut icon" href="/img/captum.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!DOCTYPE html>
 
-              ga('create', 'UA-44373548-48', 'auto');
-              ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/code_block_buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
-        document.addEventListener('DOMContentLoaded', function() {
-          addBackToTop(
-            {"zIndex":100}
-          )
-        });
-        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/captum_logo.svg" alt="Captum"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/tutorials/" target="_self">Tutorials</a></li><li class=""><a href="/api/" target="_self">API Reference</a></li><li class=""><a href="https://github.com/pytorch/captum" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div>
-<script type="text/javascript" id="documentation_options" data-url_root="./"
-src="/_sphinx/documentation_options.js"></script>
-<script type="text/javascript" src="/_sphinx/jquery.js"></script>
-<script type="text/javascript" src="/_sphinx/underscore.js"></script>
-<script type="text/javascript" src="/_sphinx/doctools.js"></script>
-<script type="text/javascript" src="/_sphinx/language_data.js"></script>
-<script type="text/javascript" src="/_sphinx/searchtools.js"></script>
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>captum.influence._core.tracincp &#8212; Captum  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/katex-math.css?v=05624691" />
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/katex.min.js?v=5cc8ed51"></script>
+    <script src="../../../../_static/auto-render.min.js?v=af98beb9"></script>
+    <script src="../../../../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
 
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-<script src="/_sphinx/katex_autorenderer.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-<div class="sphinx wrapper"><div class="document">
-<div class="documentwrapper">
-<div class="bodywrapper">
-<div class="body" role="main">
-<h1>Source code for captum.influence._core.tracincp</h1><div class="highlight"><pre>
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for captum.influence._core.tracincp</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="c1"># Copyright (c) Meta Platforms, Inc. and affiliates.</span>
@@ -77,9 +83,9 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">Module</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">Dataset</span>
 
-<span class="sa">r</span><span class="sd">"""</span>
+<span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">Note: methods starting with "_" are protected, not private, and can be overridden in</span>
+<span class="sd">Note: methods starting with &quot;_&quot; are protected, not private, and can be overridden in</span>
 <span class="sd">child classes.  They are not part of the API.</span>
 
 <span class="sd">Implements abstract DataInfluence class and provides implementation details for</span>
@@ -94,9 +100,9 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">by a training example, which is accumulated across saved model checkpoints. This</span>
 <span class="sd">influence score is accumulated via a summed dot-product of gradient vectors for the</span>
 <span class="sd">scores/loss of a test and training example.</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">TODO: Support for checkpoint type. Currently only supports model parameters as saved</span>
 <span class="sd">checkpoints. Can use enum or string.</span>
 
@@ -104,18 +110,18 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">checkpoint_type (Enum = [Parameters | Loss_Grad]): For performance,</span>
 <span class="sd">                saved / loaded checkpoints can be either model parameters, or</span>
 <span class="sd">                gradient of the loss function on an input w.r.t parameters.</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="TracInCPBase">
 <a class="viewcode-back" href="../../../../influence.html#captum.influence.TracInCPBase">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TracInCPBase</span><span class="p">(</span><span class="n">DataInfluence</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    To implement the `influence` method, classes inheriting from `TracInCPBase` will</span>
 <span class="sd">    separately implement the private `_self_influence`, `_get_k_most_influential`,</span>
 <span class="sd">    and `_influence` methods. The public `influence` method is a wrapper for these</span>
 <span class="sd">    private methods.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -131,7 +137,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="c1"># pyre-fixme[24]: Generic type `Callable` expects 2 type parameters.</span>
         <span class="n">test_loss_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Module</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 
 <span class="sd">            model (torch.nn.Module): An instance of pytorch model. This model should</span>
@@ -184,7 +190,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    `train_dataset`, and for test examples, i.e. those</span>
 <span class="sd">                    represented by the `inputs` and `targets` arguments to the</span>
 <span class="sd">                    `influence` method. For example, if one wants to calculate the</span>
-<span class="sd">                    influence score of a training example on a test example's</span>
+<span class="sd">                    influence score of a training example on a test example&#39;s</span>
 <span class="sd">                    prediction for a fixed class, `test_loss_fn` could map from the</span>
 <span class="sd">                    logits for all classes to the logits for a fixed class.</span>
 <span class="sd">                    `test_loss_fn` needs to satisfy the same constraints as `loss_fn`.</span>
@@ -192,22 +198,22 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    be the same as the loss function for training examples, i.e.</span>
 <span class="sd">                    `loss_fn`.</span>
 <span class="sd">                    Default: None</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="n">Module</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints</span> <span class="o">=</span> <span class="n">checkpoints</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_checkpoints</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints_load_func</span> <span class="o">=</span> <span class="n">checkpoints_load_func</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span>
-        <span class="c1"># If test_loss_fn not provided, it's assumed to be same as loss_fn</span>
+        <span class="c1"># If test_loss_fn not provided, it&#39;s assumed to be same as loss_fn</span>
         <span class="c1"># pyre-fixme[4]: Attribute must be annotated.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span> <span class="k">if</span> <span class="n">test_loss_fn</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">test_loss_fn</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">):</span>
             <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="p">(</span>
-                <span class="s2">"since the `train_dataset` argument was a `Dataset`, "</span>
-                <span class="s2">"`batch_size` must be an int."</span>
+                <span class="s2">&quot;since the `train_dataset` argument was a `Dataset`, &quot;</span>
+                <span class="s2">&quot;`batch_size` must be an int.&quot;</span>
             <span class="p">)</span>
             <span class="c1"># pyre-fixme[4]: Attribute must be annotated.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -223,10 +229,10 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s2">"Unable to determine the number of batches in training dataset "</span>
-                <span class="s2">"`train_dataset`. Therefore, if showing the progress of computations, "</span>
-                <span class="s2">"only the number of batches processed can be displayed, and not the "</span>
-                <span class="s2">"percentage completion of the computation, nor any time estimates."</span><span class="p">,</span>
+                <span class="s2">&quot;Unable to determine the number of batches in training dataset &quot;</span>
+                <span class="s2">&quot;`train_dataset`. Therefore, if showing the progress of computations, &quot;</span>
+                <span class="s2">&quot;only the number of batches processed can be displayed, and not the &quot;</span>
+                <span class="s2">&quot;percentage completion of the computation, nor any time estimates.&quot;</span><span class="p">,</span>
                 <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="p">)</span>
 
@@ -237,7 +243,7 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="nd">@checkpoints</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">checkpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoints</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">checkpoints</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_checkpoints</span> <span class="o">=</span> <span class="n">AV</span><span class="o">.</span><span class="n">sort_files</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">checkpoints</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_checkpoints</span> <span class="o">=</span> <span class="n">AV</span><span class="o">.</span><span class="n">sort_files</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">checkpoints</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">)))</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">checkpoints</span><span class="p">,</span> <span class="n">List</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">checkpoints</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_checkpoints</span> <span class="o">=</span> <span class="n">AV</span><span class="o">.</span><span class="n">sort_files</span><span class="p">(</span><span class="n">checkpoints</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -245,7 +251,7 @@ src="/_sphinx/documentation_options.js"></script>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_checkpoints</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Invalid checkpoints provided for TracIn class: </span><span class="si">{</span><span class="n">checkpoints</span><span class="si">}</span><span class="s2">!"</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid checkpoints provided for TracIn class: </span><span class="si">{</span><span class="n">checkpoints</span><span class="si">}</span><span class="s2">!&quot;</span>
             <span class="p">)</span>
 
 <div class="viewcode-block" id="TracInCPBase.self_influence">
@@ -256,7 +262,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">inputs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">DataLoader</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        If `inputs` is not specified calculates the self influence</span>
 <span class="sd">        scores for the training dataset `train_dataset`. Otherwise, computes</span>
 <span class="sd">        self influence scores for the examples in `inputs`,</span>
@@ -307,7 +313,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    influence scores of all examples in `inputs`, regardless of</span>
 <span class="sd">                    whether it represents a single batch or a `DataLoader` that yields</span>
 <span class="sd">                    batches.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
 
@@ -319,7 +325,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">proponents</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">KMostInfluentialResults</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 
 <span class="sd">            inputs (tuple): `inputs` is the test batch and is a tuple of</span>
@@ -359,7 +365,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    particular, `influence_scores[i][j]` is the influence score of</span>
 <span class="sd">                    example `indices[i][j]` in training dataset `train_dataset`</span>
 <span class="sd">                    on example `i` in the test batch represented by `inputs`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span>
 
     <span class="nd">@abstractmethod</span>
@@ -368,7 +374,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">DataLoader</span><span class="p">],</span>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 
 <span class="sd">            inputs (tuple): `inputs` is the test batch and is a tuple of</span>
@@ -394,7 +400,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    (inputs_batch_size, src_dataset_size). For example:</span>
 <span class="sd">                    influence_scores[i][j] = the influence score for the j-th training</span>
 <span class="sd">                    example to the i-th example in the test batch.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span>
 
 <div class="viewcode-block" id="TracInCPBase.influence">
@@ -408,7 +414,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">unpack_inputs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">KMostInfluentialResults</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is the key method of this class, and can be run in 2 different modes,</span>
 <span class="sd">        where the mode that is run depends on the arguments passed to this method:</span>
 
@@ -450,10 +456,10 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    single argument.</span>
 <span class="sd">                    Default: True</span>
 <span class="sd">            show_progress (bool, optional): For all modes, computation of results</span>
-<span class="sd">                    requires "training dataset computations": computations for each</span>
+<span class="sd">                    requires &quot;training dataset computations&quot;: computations for each</span>
 <span class="sd">                    batch in the training dataset `train_dataset`, which may</span>
 <span class="sd">                    take a long time. If `show_progress` is true, the progress of</span>
-<span class="sd">                    "training dataset computations" will be displayed. In particular,</span>
+<span class="sd">                    &quot;training dataset computations&quot; will be displayed. In particular,</span>
 <span class="sd">                    the number of batches for which computations have been performed</span>
 <span class="sd">                    will be displayed. It will try to use tqdm if available for</span>
 <span class="sd">                    advanced features (e.g. time estimation). Otherwise, it will</span>
@@ -481,22 +487,22 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">              In particular, `influence_scores[i][j]` is the influence score of example</span>
 <span class="sd">              `indices[i][j]` in `train_dataset` on example `i` in the test batch</span>
 <span class="sd">              represented by `inputs`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="TracInCPBase.get_name">
 <a class="viewcode-back" href="../../../../influence.html#captum.influence.TracInCPBase.get_name">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">"TracInCPBase"</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="s2">&quot;TracInCPBase&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create readable class name.  Due to the nature of the names of `TracInCPBase`</span>
 <span class="sd">        subclasses, simplies returns the class name.  For example, for a class called</span>
 <span class="sd">        TracInCP, we return the string TracInCP.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            name (str): a readable class name</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span></div>
 </div>
 
@@ -521,7 +527,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">test_loss_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Module</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">sample_wise_grads_per_batch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 
 <span class="sd">            model (torch.nn.Module): An instance of pytorch model. This model should</span>
@@ -565,21 +571,21 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    Default: None</span>
 <span class="sd">            loss_fn (Callable, optional): The loss function applied to model. There</span>
 <span class="sd">                    are two options for the return type of `loss_fn`. First, `loss_fn`</span>
-<span class="sd">                    can be a "per-example" loss function - returns a 1D Tensor of</span>
-<span class="sd">                    losses for each example in a batch. `nn.BCELoss(reduction="none")`</span>
-<span class="sd">                    would be an "per-example" loss function. Second, `loss_fn` can be</span>
-<span class="sd">                    a "reduction" loss function that reduces the per-example losses,</span>
+<span class="sd">                    can be a &quot;per-example&quot; loss function - returns a 1D Tensor of</span>
+<span class="sd">                    losses for each example in a batch. `nn.BCELoss(reduction=&quot;none&quot;)`</span>
+<span class="sd">                    would be an &quot;per-example&quot; loss function. Second, `loss_fn` can be</span>
+<span class="sd">                    a &quot;reduction&quot; loss function that reduces the per-example losses,</span>
 <span class="sd">                    in a batch, and returns a single scalar Tensor. For this option,</span>
 <span class="sd">                    the reduction must be the *sum* or the *mean* of the per-example</span>
-<span class="sd">                    losses. For instance, `nn.BCELoss(reduction="sum")` is acceptable.</span>
+<span class="sd">                    losses. For instance, `nn.BCELoss(reduction=&quot;sum&quot;)` is acceptable.</span>
 <span class="sd">                    Note for the first option, the `sample_wise_grads_per_batch`</span>
 <span class="sd">                    argument must be False, and for the second option,</span>
 <span class="sd">                    `sample_wise_grads_per_batch` must be True.  Also note that for</span>
-<span class="sd">                    the second option, if `loss_fn` has no "reduction" attribute,</span>
+<span class="sd">                    the second option, if `loss_fn` has no &quot;reduction&quot; attribute,</span>
 <span class="sd">                    the implementation assumes that the reduction is the *sum* of the</span>
 <span class="sd">                    per-example losses.  If this is not the case, i.e. the reduction</span>
-<span class="sd">                    is the *mean*, please set the "reduction" attribute of `loss_fn`</span>
-<span class="sd">                    to "mean", i.e. `loss_fn.reduction = "mean"`.</span>
+<span class="sd">                    is the *mean*, please set the &quot;reduction&quot; attribute of `loss_fn`</span>
+<span class="sd">                    to &quot;mean&quot;, i.e. `loss_fn.reduction = &quot;mean&quot;`.</span>
 <span class="sd">                    Default: None</span>
 <span class="sd">            batch_size (int or None, optional): Batch size of the DataLoader created to</span>
 <span class="sd">                    iterate through `train_dataset`, if it is a Dataset.</span>
@@ -595,7 +601,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    `train_dataset`, and for test examples, i.e. those</span>
 <span class="sd">                    represented by the `inputs` and `targets` arguments to the</span>
 <span class="sd">                    `influence` method. For example, if one wants to calculate the</span>
-<span class="sd">                    influence score of a training example on a test example's</span>
+<span class="sd">                    influence score of a training example on a test example&#39;s</span>
 <span class="sd">                    prediction for a fixed class, `test_loss_fn` could map from the</span>
 <span class="sd">                    logits for all classes to the logits for a fixed class.</span>
 <span class="sd">                    `test_loss_fn` needs satisfy the same constraints as `loss_fn`.</span>
@@ -603,12 +609,12 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    to `test_loss_fn`, if the latter is provided. Note that the</span>
 <span class="sd">                    constraints on both `loss_fn` and `test_loss_fn` both depend on</span>
 <span class="sd">                    `sample_wise_grads_per_batch`. This means `loss_fn` and</span>
-<span class="sd">                    `test_loss_fn` must either both be "per-example"  loss functions,</span>
-<span class="sd">                    or both be "reduction" loss functions. If not provided, the loss</span>
+<span class="sd">                    `test_loss_fn` must either both be &quot;per-example&quot;  loss functions,</span>
+<span class="sd">                    or both be &quot;reduction&quot; loss functions. If not provided, the loss</span>
 <span class="sd">                    function for test examples is assumed to be the same as the loss</span>
 <span class="sd">                    function for training examples, i.e. `loss_fn`.</span>
 <span class="sd">                    Default: None</span>
-<span class="sd">            sample_wise_grads_per_batch (bool, optional): PyTorch's native gradient</span>
+<span class="sd">            sample_wise_grads_per_batch (bool, optional): PyTorch&#39;s native gradient</span>
 <span class="sd">                    computations w.r.t. model parameters aggregates the results for a</span>
 <span class="sd">                    batch and does not allow to access sample-wise gradients w.r.t.</span>
 <span class="sd">                    model parameters. This forces us to iterate over each sample in</span>
@@ -617,8 +623,8 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    computations w.r.t. to model parameters which is computationally</span>
 <span class="sd">                    more efficient. This implementation can be enabled by setting the</span>
 <span class="sd">                    `sample_wise_grads_per_batch` argument to `True`, and should be</span>
-<span class="sd">                    enabled if and only if the `loss_fn` argument is a "reduction" loss</span>
-<span class="sd">                    function. For example, `nn.BCELoss(reduction="sum")` would be a</span>
+<span class="sd">                    enabled if and only if the `loss_fn` argument is a &quot;reduction&quot; loss</span>
+<span class="sd">                    function. For example, `nn.BCELoss(reduction=&quot;sum&quot;)` would be a</span>
 <span class="sd">                    valid `loss_fn` if this implementation is enabled (see</span>
 <span class="sd">                    documentation for `loss_fn` for more details). Note that our</span>
 <span class="sd">                    current implementation enables batch-wise gradient computations</span>
@@ -627,7 +633,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    do not enable this implementation if gradients will be computed</span>
 <span class="sd">                    for other kinds of layers.</span>
 <span class="sd">                    Default: False</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">TracInCPBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -644,22 +650,22 @@ src="/_sphinx/documentation_options.js"></script>
 
         <span class="c1"># check `loss_fn`</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reduction_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">_check_loss_fn</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="s2">"loss_fn"</span><span class="p">,</span> <span class="n">sample_wise_grads_per_batch</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="s2">&quot;loss_fn&quot;</span><span class="p">,</span> <span class="n">sample_wise_grads_per_batch</span>
         <span class="p">)</span>
         <span class="c1"># check `test_loss_fn` if it was provided</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_reduction_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">reduction_type</span>
             <span class="k">if</span> <span class="n">test_loss_fn</span> <span class="ow">is</span> <span class="kc">None</span>
             <span class="k">else</span> <span class="n">_check_loss_fn</span><span class="p">(</span>
-                <span class="bp">self</span><span class="p">,</span> <span class="n">test_loss_fn</span><span class="p">,</span> <span class="s2">"test_loss_fn"</span><span class="p">,</span> <span class="n">sample_wise_grads_per_batch</span>
+                <span class="bp">self</span><span class="p">,</span> <span class="n">test_loss_fn</span><span class="p">,</span> <span class="s2">&quot;test_loss_fn&quot;</span><span class="p">,</span> <span class="n">sample_wise_grads_per_batch</span>
             <span class="p">)</span>
         <span class="p">)</span>
 
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        TODO: Either restore model state after done (would have to place functionality</span>
 <span class="sd">        within influence to restore after every influence call)? or make a copy so that</span>
-<span class="sd">        changes to grad_requires aren't persistent after using TracIn.</span>
-<span class="sd">        """</span>
+<span class="sd">        changes to grad_requires aren&#39;t persistent after using TracIn.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layer_modules</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Module</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">layers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">layer_modules</span> <span class="o">=</span> <span class="n">_set_active_parameters</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">layers</span><span class="p">)</span>
@@ -675,7 +681,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">aggregate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">KMostInfluentialResults</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is the key method of this class, and can be run in 2 different modes,</span>
 <span class="sd">        where the mode that is run depends on the arguments passed to this method.</span>
 <span class="sd">        Below, we describe the 2 modes, when `aggregate` is false:</span>
@@ -694,7 +700,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">          actual influence score of each proponent (resp. opponent) on the test</span>
 <span class="sd">          example.</span>
 
-<span class="sd">        When `aggregate` is True, this method computes "aggregate" influence scores,</span>
+<span class="sd">        When `aggregate` is True, this method computes &quot;aggregate&quot; influence scores,</span>
 <span class="sd">        which for a given training example, is the *sum* of its influence scores over</span>
 <span class="sd">        all examples in the test dataset. Below, we describe the 2 modes, when</span>
 <span class="sd">        `aggregate` is True:</span>
@@ -703,7 +709,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">          the aggregate influence score of each example in training dataset</span>
 <span class="sd">          `train_dataset` on the test dataset.</span>
 <span class="sd">        - k-most influential mode: This mode is used if `k` is not None, and an int.</span>
-<span class="sd">          This mode computes the "aggregate" proponents (resp. opponents), which are</span>
+<span class="sd">          This mode computes the &quot;aggregate&quot; proponents (resp. opponents), which are</span>
 <span class="sd">          the indices in the training dataset `train_dataset` of the examples with the</span>
 <span class="sd">          `k` highest (resp. lowest) aggregate influence scores on the test dataset.</span>
 <span class="sd">          Proponents are computed if `proponents` is True. Otherwise, opponents are</span>
@@ -733,16 +739,16 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    mode.</span>
 <span class="sd">                    Default: True</span>
 <span class="sd">            show_progress (bool, optional): For all modes, computation of results</span>
-<span class="sd">                    requires "training dataset computations": computations for each</span>
+<span class="sd">                    requires &quot;training dataset computations&quot;: computations for each</span>
 <span class="sd">                    batch in the training dataset `train_dataset`, which may</span>
 <span class="sd">                    take a long time. If `show_progress` is true, the progress of</span>
-<span class="sd">                    "training dataset computations" will be displayed. In particular,</span>
+<span class="sd">                    &quot;training dataset computations&quot; will be displayed. In particular,</span>
 <span class="sd">                    the number of batches for which computations have been performed</span>
 <span class="sd">                    will be displayed. It will try to use tqdm if available for</span>
 <span class="sd">                    advanced features (e.g. time estimation). Otherwise, it will</span>
 <span class="sd">                    fallback to a simple output of progress.</span>
 <span class="sd">                    Default: False</span>
-<span class="sd">            aggregate (bool, optional): If true, return "aggregate" influence scores or</span>
+<span class="sd">            aggregate (bool, optional): If true, return &quot;aggregate&quot; influence scores or</span>
 <span class="sd">                    examples with the highest / lowest aggregate influence scores on</span>
 <span class="sd">                    the test dataset, depending on the mode.</span>
 
@@ -786,12 +792,12 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">              aggregate influence scores. In particular, `influence_scores[0][j]` is</span>
 <span class="sd">              the aggregate influence score of example `indices[0][j]` on the test</span>
 <span class="sd">              dataset.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">assert</span> <span class="n">inputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
-            <span class="s2">"`inputs` argument is required."</span>
-            <span class="s2">"If you wish to calculate self influence scores,"</span>
-            <span class="s2">" please use the `self_influence` method instead."</span>
+            <span class="s2">&quot;`inputs` argument is required.&quot;</span>
+            <span class="s2">&quot;If you wish to calculate self influence scores,&quot;</span>
+            <span class="s2">&quot; please use the `self_influence` method instead.&quot;</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">_influence_route_to_helpers</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -810,10 +816,10 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">loss_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Module</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">reduction_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        sums the jacobians of all examples in `inputs`. result is of the</span>
 <span class="sd">        same format as layer_jacobians, but the batch dimension has size 1</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">inputs_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
         <span class="n">inputs_batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs_iter</span><span class="p">)</span>
@@ -875,8 +881,8 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">DataLoader</span><span class="p">],</span>
         <span class="n">aggregate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Computes "embedding" vectors for all examples in a single batch, or a</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes &quot;embedding&quot; vectors for all examples in a single batch, or a</span>
 <span class="sd">        `Dataloader` that yields batches. These embedding vectors are constructed so</span>
 <span class="sd">        that the influence score of a training example on a test example is simply the</span>
 <span class="sd">        dot-product of their corresponding vectors. Allowing a `DataLoader`</span>
@@ -891,7 +897,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">        instead of the vectors for each example. This can be useful for computing the</span>
 <span class="sd">        influence of a given training example on the total loss over a validation</span>
 <span class="sd">        dataset, because due to properties of the dot-product, this influence is the</span>
-<span class="sd">        dot-product of the training example's vector with the sum of the vectors in the</span>
+<span class="sd">        dot-product of the training example&#39;s vector with the sum of the vectors in the</span>
 <span class="sd">        validation dataset. Also, by doing the sum aggregation within this method as</span>
 <span class="sd">        opposed to outside of it (by computing all vectors for the validation dataset,</span>
 <span class="sd">        then taking the sum) allows memory usage to be reduced.</span>
@@ -927,13 +933,13 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    `self.projection_dim` * C. `self.projection_dim` corresponds to</span>
 <span class="sd">                    the variable d in the top of page 15 of the TracIn paper:</span>
 <span class="sd">                    https://arxiv.org/pdf/2002.08484.pdf.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">f_inputs</span><span class="p">:</span> <span class="n">DataLoader</span> <span class="o">=</span> <span class="n">_format_inputs_dataset</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">get_checkpoint_contribution</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
             <span class="k">assert</span> <span class="p">(</span>
                 <span class="n">checkpoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="p">),</span> <span class="s2">"None returned from `checkpoints`, cannot load."</span>
+            <span class="p">),</span> <span class="s2">&quot;None returned from `checkpoints`, cannot load.&quot;</span>
 
             <span class="n">learning_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints_load_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
             <span class="c1"># get jacobians as tuple of tensors</span>
@@ -972,12 +978,12 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">input_checkpoint_jacobians</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">]],</span>
         <span class="n">train_batch</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        computes influence scores for a single training batch.</span>
 <span class="sd">        `input_checkpoint_jacobians` is the output of</span>
 <span class="sd">        `_basic_computation_tracincp` applied to the test batch, for each checkpoint,</span>
 <span class="sd">        computed by `_get_checkpoint_jacobians`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">get_checkpoint_contribution</span><span class="p">(</span>
             <span class="n">input_jacobians</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">checkpoint</span><span class="p">:</span> <span class="nb">str</span>
@@ -985,7 +991,7 @@ src="/_sphinx/documentation_options.js"></script>
 
             <span class="k">assert</span> <span class="p">(</span>
                 <span class="n">checkpoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="p">),</span> <span class="s2">"None returned from `checkpoints`, cannot load."</span>
+            <span class="p">),</span> <span class="s2">&quot;None returned from `checkpoints`, cannot load.&quot;</span>
 
             <span class="n">learning_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints_load_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
 
@@ -1022,13 +1028,13 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="c1"># pyre-fixme[24]: Generic type `Callable` expects 2 type parameters.</span>
         <span class="n">loss_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Module</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        computes the jacobians of all examples in `inputs_dataset`, for all</span>
 <span class="sd">        checkpoints. if `aggregate` is True, the jacobians for examples are summed.</span>
 <span class="sd">        returns a list where each element corresponds to a checkpoint. this logic is</span>
 <span class="sd">        separated into a helper function because it is used by both `_influence` and</span>
 <span class="sd">        `_get_k_most_influential`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">inputs_checkpoint_jacobians</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">checkpoint</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints_load_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
@@ -1048,7 +1054,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">aggregate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the influence of examples in training dataset `train_dataset`</span>
 <span class="sd">        on the examples in the test dataset represented by `inputs`.</span>
 <span class="sd">        This implementation does not require knowing the number of training examples</span>
@@ -1074,7 +1080,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    estimation). Otherwise, it will fallback to a simple output of</span>
 <span class="sd">                    progress.</span>
 <span class="sd">                    Default: False</span>
-<span class="sd">            aggregate (bool): Whether to return "aggregate" influence scores (see their</span>
+<span class="sd">            aggregate (bool): Whether to return &quot;aggregate&quot; influence scores (see their</span>
 <span class="sd">                    definition in `influence`).</span>
 <span class="sd">                    Default: False</span>
 
@@ -1086,10 +1092,10 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">            training dataset `train_dataset`. For example:</span>
 <span class="sd">            `influence_scores[i][j]` is the influence score for the j-th training</span>
 <span class="sd">            example to the i-th example in the test dataset. If `aggregate` is True,</span>
-<span class="sd">            "aggregate" influence scores are returned as a 2D tensor whose shape is</span>
+<span class="sd">            &quot;aggregate&quot; influence scores are returned as a 2D tensor whose shape is</span>
 <span class="sd">            `(1, train_dataset_size)`. For example: `influence_scores[0][j]` is the</span>
 <span class="sd">            aggregate influence score of the j-th training example on the test dataset.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># If `inputs` is not a `DataLoader`, turn it into one.</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">_format_inputs_dataset</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
@@ -1101,8 +1107,8 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="n">data_iterable</span> <span class="o">=</span> <span class="n">progress</span><span class="p">(</span>
                 <span class="n">cast</span><span class="p">(</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">object</span><span class="p">,</span> <span class="o">...</span><span class="p">]],</span> <span class="n">train_dataloader</span><span class="p">),</span>
                 <span class="n">desc</span><span class="o">=</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">"Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> to compute "</span>
-                    <span class="s2">"influence for training batches"</span>
+                    <span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> to compute &quot;</span>
+                    <span class="s2">&quot;influence for training batches&quot;</span>
                 <span class="p">),</span>
                 <span class="n">total</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader_len</span><span class="p">,</span>
             <span class="p">)</span>
@@ -1129,7 +1135,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">aggregate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">KMostInfluentialResults</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 
 <span class="sd">            inputs (Tuple, or DataLoader): Either a single tuple of any, or a</span>
@@ -1155,7 +1161,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    available for advanced features (e.g. time estimation). Otherwise,</span>
 <span class="sd">                    it will fallback to a simple output of progress.</span>
 <span class="sd">                    Default: False</span>
-<span class="sd">            aggregate (bool): Whether to return with the highest / lowest "aggregate"</span>
+<span class="sd">            aggregate (bool): Whether to return with the highest / lowest &quot;aggregate&quot;</span>
 <span class="sd">                    influence scores (see their definition in `influence`).</span>
 
 <span class="sd">        Returns:</span>
@@ -1177,7 +1183,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    `influence_scores` contains the corresponding aggregate influence</span>
 <span class="sd">                    scores. In particular, `influence_scores[0][j]` is the aggregate</span>
 <span class="sd">                    influence score of example `indices[0][j]` on the test dataset.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># If `inputs` is not a `DataLoader`, turn it into one.</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">_format_inputs_dataset</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
@@ -1186,9 +1192,9 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">show_progress</span>
             <span class="k">else</span> <span class="p">(</span>
                 <span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">"Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> to perform computation for "</span>
-                    <span class="sa">f</span><span class="s1">'getting </span><span class="si">{</span><span class="s2">"proponents"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">proponents</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">"opponents"</span><span class="si">}</span><span class="s1">. '</span>
-                    <span class="s2">"Processing training batches"</span>
+                    <span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> to perform computation for &quot;</span>
+                    <span class="sa">f</span><span class="s1">&#39;getting </span><span class="si">{</span><span class="s2">&quot;proponents&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">proponents</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;opponents&quot;</span><span class="si">}</span><span class="s1">. &#39;</span>
+                    <span class="s2">&quot;Processing training batches&quot;</span>
                 <span class="p">)</span>
             <span class="p">)</span>
         <span class="p">)</span>
@@ -1216,7 +1222,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">DataLoader</span><span class="p">],</span>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes self influence scores for the examples in `inputs`, which is</span>
 <span class="sd">        either a single batch or a Pytorch `DataLoader` that yields batches. Therefore,</span>
 <span class="sd">        the computed self influence scores are *not* for the examples in training</span>
@@ -1261,7 +1267,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    influence scores of all examples in `inputs`, regardless of</span>
 <span class="sd">                    whether it represents a single batch or a `DataLoader` that yields</span>
 <span class="sd">                    batches.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># If `inputs` is not a `DataLoader`, turn it into one.</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">_format_inputs_dataset</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
@@ -1275,11 +1281,11 @@ src="/_sphinx/documentation_options.js"></script>
                 <span class="n">inputs_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                    <span class="s2">"Unable to determine the number of batches in `inputs`. "</span>
-                    <span class="s2">"Therefore, if showing the progress of the computation of self "</span>
-                    <span class="s2">"influence scores, only the number of batches processed can be "</span>
-                    <span class="s2">"displayed, and not the percentage completion of the computation, "</span>
-                    <span class="s2">"nor any time estimates."</span><span class="p">,</span>
+                    <span class="s2">&quot;Unable to determine the number of batches in `inputs`. &quot;</span>
+                    <span class="s2">&quot;Therefore, if showing the progress of the computation of self &quot;</span>
+                    <span class="s2">&quot;influence scores, only the number of batches processed can be &quot;</span>
+                    <span class="s2">&quot;displayed, and not the percentage completion of the computation, &quot;</span>
+                    <span class="s2">&quot;nor any time estimates.&quot;</span><span class="p">,</span>
                     <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="p">)</span>
 
@@ -1300,7 +1306,7 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="c1"># examples in `inputs`.</span>
             <span class="k">assert</span> <span class="p">(</span>
                 <span class="n">checkpoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="p">),</span> <span class="s2">"None returned from `checkpoints`, cannot load."</span>
+            <span class="p">),</span> <span class="s2">&quot;None returned from `checkpoints`, cannot load.&quot;</span>
 
             <span class="n">learning_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints_load_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)</span>
 
@@ -1317,8 +1323,8 @@ src="/_sphinx/documentation_options.js"></script>
                 <span class="n">_inputs</span> <span class="o">=</span> <span class="n">progress</span><span class="p">(</span>
                     <span class="n">inputs</span><span class="p">,</span>
                     <span class="n">desc</span><span class="o">=</span><span class="p">(</span>
-                        <span class="sa">f</span><span class="s2">"Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> to compute self "</span>
-                        <span class="s2">"influence. Processing batch"</span>
+                        <span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> to compute self &quot;</span>
+                        <span class="s2">&quot;influence. Processing batch&quot;</span>
                     <span class="p">),</span>
                     <span class="n">total</span><span class="o">=</span><span class="n">inputs_len</span><span class="p">,</span>
                 <span class="p">)</span>
@@ -1334,8 +1340,8 @@ src="/_sphinx/documentation_options.js"></script>
 
                 <span class="c1"># Note that all variables in this function are for an entire batch.</span>
                 <span class="c1"># Each `layer_jacobian` in `layer_jacobians` corresponds to a different</span>
-                <span class="c1"># layer. `layer_jacobian` is the jacobian w.r.t to a given layer's</span>
-                <span class="c1"># parameters. If the given layer's parameters are of shape *, then</span>
+                <span class="c1"># layer. `layer_jacobian` is the jacobian w.r.t to a given layer&#39;s</span>
+                <span class="c1"># parameters. If the given layer&#39;s parameters are of shape *, then</span>
                 <span class="c1"># `layer_jacobian` is of shape (batch_size, *). For each layer, we need</span>
                 <span class="c1"># the squared jacobian for each example. So we square the jacobian and</span>
                 <span class="c1"># sum over all dimensions except the 0-th (the batch dimension). We then</span>
@@ -1364,8 +1370,8 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="k">if</span> <span class="n">show_progress</span><span class="p">:</span>
             <span class="n">checkpoints_progress</span> <span class="o">=</span> <span class="n">progress</span><span class="p">(</span>
                 <span class="n">desc</span><span class="o">=</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">"Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> to compute self "</span>
-                    <span class="s2">"influence. Processing checkpoint"</span>
+                    <span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> to compute self &quot;</span>
+                    <span class="s2">&quot;influence. Processing checkpoint&quot;</span>
                 <span class="p">),</span>
                 <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checkpoints</span><span class="p">),</span>
                 <span class="n">mininterval</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
@@ -1394,7 +1400,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">outer_loop_by_checkpoints</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes self influence scores for the examples in `inputs`, which is</span>
 <span class="sd">        either a single batch or a Pytorch `DataLoader` that yields batches.</span>
 <span class="sd">        If `inputs` is not specified or `None` calculates self influence</span>
@@ -1452,7 +1458,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    iteration over checkpoints; see method description for more</span>
 <span class="sd">                    details.</span>
 <span class="sd">                    Default: False</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span> <span class="k">if</span> <span class="n">inputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span>
         <span class="k">if</span> <span class="n">outer_loop_by_checkpoints</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_self_influence_by_checkpoints</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">show_progress</span><span class="p">)</span>
@@ -1472,7 +1478,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">loss_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Module</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">reduction_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        For instances of TracInCP, computation of influence scores or self influence</span>
 <span class="sd">        scores repeatedly calls this function for different checkpoints</span>
 <span class="sd">        and batches. In particular, this function computes the jacobian of a loss</span>
@@ -1492,25 +1498,36 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">            reduction_type (str, optional): The reduction type of `loss_fn`. This</span>
 <span class="sd">                    argument is only used if `sample_wise_grads_per_batch` was true in</span>
 <span class="sd">                    initialization.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">_compute_jacobian_sample_wise_grads_per_batch</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">reduction_type</span>
         <span class="p">)</span></div>
 
 </pre></div>
-</div>
-</div>
-</div>
-<div aria-label="Main" class="sphinxsidebar" role="navigation">
-<div class="sphinxsidebarwrapper">
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../../../../index.html">Captum</a></h1>
-<search id="searchbox" role="search" style="display: none">
-<div class="searchformwrapper">
-<form action="../../../../search.html" class="search" method="get">
-<input aria-labelledby="searchlabel" autocapitalize="off" autocomplete="off" autocorrect="off" name="q" placeholder="Search" spellcheck="false" type="text"/>
-<input type="submit" value="Go"/>
-</form>
-</div>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
@@ -1528,45 +1545,35 @@ src="/_sphinx/documentation_options.js"></script>
 <li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../base_classes.html">Base Classes</a></li>
 </ul>
+
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-<li><a href="../../../../index.html">Documentation overview</a><ul>
-<li><a href="../../../index.html">Module code</a><ul>
-</ul></li>
-</ul></li>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="clearer"></div>
-</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footerSection"><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div class="footerSection"><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/pytorch/captum" data-count-href="https://github.com/pytorch/captum/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Captum on GitHub">captum</a></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright"> Copyright © 2026 Meta Platforms, Inc.</section><script>
-            (function() {
-              var BAD_BASE = '/captum/';
-              if (window.location.origin !== 'https://captum.ai') {
-                var pathname = window.location.pathname;
-                var newPathname = pathname.slice(pathname.indexOf(BAD_BASE) === 0 ? BAD_BASE.length : 1);
-                var newLocation = 'https://captum.ai/' + newPathname;
-                console.log('redirecting to ' + newLocation);
-                window.location.href = newLocation;
-              }
-            })();
-          </script></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
-                document.addEventListener('keyup', function(e) {
-                  if (e.target !== document.body) {
-                    return;
-                  }
-                  // keyCode for '/' (slash)
-                  if (e.keyCode === 191) {
-                    const search = document.getElementById('search_input_react');
-                    search && search.focus();
-                  }
-                });
-              </script><script>
-              var search = docsearch({
-                
-                apiKey: '207c27d819f967749142d8611de7cb19',
-                indexName: 'captum',
-                inputSelector: '#search_input_react'
-              });
-            </script></body></html>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

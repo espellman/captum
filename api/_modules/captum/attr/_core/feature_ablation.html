@@ -1,35 +1,41 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Captum · Model Interpretability for PyTorch</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Model Interpretability for PyTorch"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Captum · Model Interpretability for PyTorch"/><meta property="og:type" content="website"/><meta property="og:url" content="https://captum.ai/"/><meta property="og:description" content="Model Interpretability for PyTorch"/><meta property="og:image" content="https://captum.ai/img/captum-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://captum.ai/img/captum.png"/><link rel="shortcut icon" href="/img/captum.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!DOCTYPE html>
 
-              ga('create', 'UA-44373548-48', 'auto');
-              ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/code_block_buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
-        document.addEventListener('DOMContentLoaded', function() {
-          addBackToTop(
-            {"zIndex":100}
-          )
-        });
-        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/captum_logo.svg" alt="Captum"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/tutorials/" target="_self">Tutorials</a></li><li class=""><a href="/api/" target="_self">API Reference</a></li><li class=""><a href="https://github.com/pytorch/captum" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div>
-<script type="text/javascript" id="documentation_options" data-url_root="./"
-src="/_sphinx/documentation_options.js"></script>
-<script type="text/javascript" src="/_sphinx/jquery.js"></script>
-<script type="text/javascript" src="/_sphinx/underscore.js"></script>
-<script type="text/javascript" src="/_sphinx/doctools.js"></script>
-<script type="text/javascript" src="/_sphinx/language_data.js"></script>
-<script type="text/javascript" src="/_sphinx/searchtools.js"></script>
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>captum.attr._core.feature_ablation &#8212; Captum  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/katex-math.css?v=05624691" />
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/katex.min.js?v=5cc8ed51"></script>
+    <script src="../../../../_static/auto-render.min.js?v=af98beb9"></script>
+    <script src="../../../../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
 
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-<script src="/_sphinx/katex_autorenderer.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-<div class="sphinx wrapper"><div class="document">
-<div class="documentwrapper">
-<div class="bodywrapper">
-<div class="body" role="main">
-<h1>Source code for captum.attr._core.feature_ablation</h1><div class="highlight"><pre>
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for captum.attr._core.feature_ablation</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="c1"># Copyright (c) Meta Platforms, Inc. and affiliates.</span>
@@ -71,17 +77,17 @@ src="/_sphinx/documentation_options.js"></script>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_parse_forward_out</span><span class="p">(</span><span class="n">forward_output</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A temp wrapper for global _run_forward util to force forward output</span>
 <span class="sd">    type assertion &amp; conversion.</span>
 <span class="sd">    Remove after the strict logic is supported by all attr classes</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">forward_output</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">forward_output</span>
 
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">forward_output</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)),</span> <span class="p">(</span>
-        <span class="s2">"the return of forward_func must be a tensor, int, or float,"</span>
-        <span class="sa">f</span><span class="s2">" received: </span><span class="si">{</span><span class="n">forward_output</span><span class="si">}</span><span class="s2">"</span>
+        <span class="s2">&quot;the return of forward_func must be a tensor, int, or float,&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot; received: </span><span class="si">{</span><span class="n">forward_output</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="p">)</span>
 
     <span class="c1"># using python built-in type as torch dtype</span>
@@ -142,10 +148,10 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="n">is_inputs_tuple</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
     <span class="n">use_weights</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Normalizes attributions by weights if enabled and</span>
 <span class="sd">    formats output as single tensor or tuple.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Divide total attributions by counts and return formatted attributions</span>
     <span class="k">if</span> <span class="n">use_weights</span><span class="p">:</span>
         <span class="n">attrib</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
@@ -164,8 +170,8 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="n">modified_eval</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">perturbations_per_eval</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Validates that the forward function's output shape scales correctly with</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates that the forward function&#39;s output shape scales correctly with</span>
 <span class="sd">    input batch size when perturbations_per_eval &gt; 1.</span>
 
 <span class="sd">    When multiple perturbations are evaluated simultaneously</span>
@@ -192,7 +198,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                    scale correctly. Specifically, if modified_eval.shape[0] is not</span>
 <span class="sd">                    equal to n_perturb * initial_eval.shape[0], where n_perturb is</span>
 <span class="sd">                    the ratio of current batch size to original batch size.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">perturbations_per_eval</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="c1"># if perturbations_per_eval &gt; 1, the output shape must grow with</span>
@@ -216,12 +222,12 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="c1"># check if the output grow in same ratio, i.e., not agg</span>
             <span class="ow">and</span> <span class="n">current_output_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">n_perturb</span> <span class="o">*</span> <span class="n">initial_output_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="p">),</span> <span class="p">(</span>
-            <span class="s2">"When perturbations_per_eval &gt; 1, forward_func's output "</span>
-            <span class="s2">"should be a tensor whose 1st dim grow with the input "</span>
-            <span class="sa">f</span><span class="s2">"batch size: when input batch size is </span><span class="si">{</span><span class="n">num_examples</span><span class="si">}</span><span class="s2">, "</span>
-            <span class="sa">f</span><span class="s2">"the output shape is </span><span class="si">{</span><span class="n">initial_output_shape</span><span class="si">}</span><span class="s2">; "</span>
-            <span class="sa">f</span><span class="s2">"when input batch size is </span><span class="si">{</span><span class="n">current_batch_size</span><span class="si">}</span><span class="s2">, "</span>
-            <span class="sa">f</span><span class="s2">"the output shape is </span><span class="si">{</span><span class="n">current_output_shape</span><span class="si">}</span><span class="s2">"</span>
+            <span class="s2">&quot;When perturbations_per_eval &gt; 1, forward_func&#39;s output &quot;</span>
+            <span class="s2">&quot;should be a tensor whose 1st dim grow with the input &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;batch size: when input batch size is </span><span class="si">{</span><span class="n">num_examples</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;the output shape is </span><span class="si">{</span><span class="n">initial_output_shape</span><span class="si">}</span><span class="s2">; &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;when input batch size is </span><span class="si">{</span><span class="n">current_batch_size</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;the output shape is </span><span class="si">{</span><span class="n">current_output_shape</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
 
@@ -231,7 +237,7 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="n">formatted_inputs</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
     <span class="n">min_examples_per_batch_grouped</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determines whether a feature group should be skipped during attribution computation.</span>
 
 <span class="sd">    This method checks two conditions that would cause a feature group to be skipped:</span>
@@ -241,7 +247,7 @@ src="/_sphinx/documentation_options.js"></script>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        bool: True if the feature group should be skipped, False otherwise.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">should_skip</span> <span class="o">=</span> <span class="n">_should_skip_inputs</span><span class="p">(</span>
         <span class="n">current_feature_idxs</span><span class="p">,</span>
         <span class="n">feature_idx_to_tensor_idx</span><span class="p">,</span>
@@ -262,15 +268,15 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="n">formatted_inputs</span><span class="p">[</span><span class="n">tensor_idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">min_examples_per_batch_grouped</span>
         <span class="p">):</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Skipping feature group </span><span class="si">{</span><span class="n">current_feature_idxs</span><span class="si">}</span><span class="s2"> since it contains "</span>
-                <span class="sa">f</span><span class="s2">"at least one input tensor with 0th dim less than "</span>
-                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">min_examples_per_batch_grouped</span><span class="si">}</span><span class="s2">"</span>
+                <span class="sa">f</span><span class="s2">&quot;Skipping feature group </span><span class="si">{</span><span class="n">current_feature_idxs</span><span class="si">}</span><span class="s2"> since it contains &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;at least one input tensor with 0th dim less than &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">min_examples_per_batch_grouped</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="n">all_empty</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Skipping feature group </span><span class="si">{</span><span class="n">current_feature_idxs</span><span class="si">}</span><span class="s2"> since all "</span>
-            <span class="sa">f</span><span class="s2">"input tensors are empty"</span>
+            <span class="sa">f</span><span class="s2">&quot;Skipping feature group </span><span class="si">{</span><span class="n">current_feature_idxs</span><span class="si">}</span><span class="s2"> since all &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;input tensors are empty&quot;</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
@@ -282,7 +288,7 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="n">formatted_inputs</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
     <span class="n">min_examples_per_batch_grouped</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Return whether attribution will skip this group without logging."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return whether attribution will skip this group without logging.&quot;&quot;&quot;</span>
     <span class="n">tensor_idxs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">tensor_idx</span>
         <span class="k">for</span> <span class="n">feature_idx</span> <span class="ow">in</span> <span class="n">current_feature_idxs</span>
@@ -301,7 +307,7 @@ src="/_sphinx/documentation_options.js"></script>
 <div class="viewcode-block" id="FeatureAblation">
 <a class="viewcode-back" href="../../../../feature_ablation.html#captum.attr.FeatureAblation">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">FeatureAblation</span><span class="p">(</span><span class="n">PerturbationAttribution</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A perturbation based approach to computing attribution, involving</span>
 <span class="sd">    replacing each input feature with a given baseline / reference, and</span>
 <span class="sd">    computing the difference in output. By default, each scalar value within</span>
@@ -316,31 +322,31 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">    The forward function can either return a scalar per example or a tensor</span>
 <span class="sd">    of a fixed sized tensor (or scalar value) for the full batch, i.e. the</span>
 <span class="sd">    output does not grow as the batch size increase. If the output is fixed</span>
-<span class="sd">    we consider this model to be an "aggregation" of the inputs. In the fixed</span>
+<span class="sd">    we consider this model to be an &quot;aggregation&quot; of the inputs. In the fixed</span>
 <span class="sd">    sized output mode we require `perturbations_per_eval == 1` and the</span>
 <span class="sd">    `feature_mask` to be either `None` or for all of them to have 1 as their</span>
 <span class="sd">    first dimension (i.e. a feature mask requires to be applied to all inputs).</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">forward_func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Future</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 
 <span class="sd">            forward_func (Callable): The forward function of the model or</span>
 <span class="sd">                        any modification of it.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">PerturbationAttribution</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">forward_func</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">use_weights</span> <span class="o">=</span> <span class="kc">False</span>
 
-        <span class="c1"># only used when perturbations_per_eval &gt; 1, where the 1st dim of forward_func's</span>
-        <span class="c1"># output must grow as the input batch size. If forward's output is aggregated,</span>
+        <span class="c1"># only used when perturbations_per_eval &gt; 1, where the 1st dim of forward_func&#39;s</span>
+        <span class="c1"># output must grow as the input batch size. If forward&#39;s output is aggregated,</span>
         <span class="c1"># we cannot expand the input to include more perturbations in one call.</span>
-        <span class="c1"># If it's False, we will force the validation by comparing the outpus of</span>
+        <span class="c1"># If it&#39;s False, we will force the validation by comparing the outpus of</span>
         <span class="c1"># the original input and the modified input whose batch size expanded based on</span>
         <span class="c1"># perturbations_per_eval. Set the flag to True if the output of the modified</span>
-        <span class="c1"># input grow as expected. Once it turns to True, we will assume the model's</span>
+        <span class="c1"># input grow as expected. Once it turns to True, we will assume the model&#39;s</span>
         <span class="c1"># behavior stays consistent and no longer check again</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_output_shape_valid</span> <span class="o">=</span> <span class="kc">False</span>
 
@@ -366,10 +372,10 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">run_forward_on_skip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Return the exact number of model forwards for this attribution."""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the exact number of model forwards for this attribution.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">FeatureAblation</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> must provide its own exact forward plan."</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> must provide its own exact forward plan.&quot;</span>
             <span class="p">)</span>
         <span class="k">del</span> <span class="n">baselines</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">additional_forward_args</span><span class="p">,</span> <span class="n">show_progress</span>
         <span class="n">formatted_inputs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_format_input_baseline</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -423,7 +429,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">run_forward_on_skip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TensorOrTupleOfTensorsGeneric</span><span class="p">:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            inputs (Tensor or tuple[Tensor, ...]): Input for which ablation</span>
 <span class="sd">                        attributions are computed. If forward_func takes a single</span>
@@ -447,16 +453,16 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                          be broadcasted for each input value in input tensor.</span>
 
 <span class="sd">                        - a tuple of tensors or scalars, the baseline corresponding</span>
-<span class="sd">                          to each tensor in the inputs' tuple can be:</span>
+<span class="sd">                          to each tensor in the inputs&#39; tuple can be:</span>
 
 <span class="sd">                          - either a tensor with matching dimensions to</span>
-<span class="sd">                            corresponding tensor in the inputs' tuple</span>
+<span class="sd">                            corresponding tensor in the inputs&#39; tuple</span>
 <span class="sd">                            or the first dimension is one and the remaining</span>
 <span class="sd">                            dimensions match with the corresponding</span>
 <span class="sd">                            input tensor.</span>
 
 <span class="sd">                          - or a scalar, corresponding to a tensor in the</span>
-<span class="sd">                            inputs' tuple. This scalar value is broadcasted</span>
+<span class="sd">                            inputs&#39; tuple. This scalar value is broadcasted</span>
 <span class="sd">                            for corresponding input tensor.</span>
 
 <span class="sd">                        In the cases when `baselines` is not provided, we internally</span>
@@ -531,7 +537,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                        device contain at most</span>
 <span class="sd">                        (perturbations_per_eval * #examples) / num_devices</span>
 <span class="sd">                        samples.</span>
-<span class="sd">                        If the forward function's number of outputs does not</span>
+<span class="sd">                        If the forward function&#39;s number of outputs does not</span>
 <span class="sd">                        change as the batch size grows (e.g. if it outputs a</span>
 <span class="sd">                        scalar value), you must set perturbations_per_eval to 1</span>
 <span class="sd">                        and use a single feature mask to describe the features</span>
@@ -552,7 +558,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                        issuing the same number of forwards (and thus the same</span>
 <span class="sd">                        collectives, e.g. all-to-all) across ranks, so NCCL stays</span>
 <span class="sd">                        in lockstep even when per-rank batch shapes diverge. The</span>
-<span class="sd">                        affected group's attribution stays zero, so the numerical</span>
+<span class="sd">                        affected group&#39;s attribution stays zero, so the numerical</span>
 <span class="sd">                        result is identical to skipping. Default False keeps</span>
 <span class="sd">                        single-process / OSS behavior unchanged.</span>
 <span class="sd">                        Default: False</span>
@@ -612,7 +618,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">            &gt;&gt;&gt; feature_mask = torch.tensor([[[0,0,1,1],[0,0,1,1],</span>
 <span class="sd">            &gt;&gt;&gt;                             [2,2,3,3],[2,2,3,3]]])</span>
 <span class="sd">            &gt;&gt;&gt; attr = ablator.attribute(input, target=1, feature_mask=feature_mask)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Keeps track whether original input is a tuple or not before</span>
         <span class="c1"># converting it into a tuple. We return the attribution as tuple in the</span>
         <span class="c1"># end if the inputs were a tuple.</span>
@@ -626,7 +632,7 @@ src="/_sphinx/documentation_options.js"></script>
 
         <span class="k">assert</span> <span class="p">(</span>
             <span class="nb">isinstance</span><span class="p">(</span><span class="n">perturbations_per_eval</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">perturbations_per_eval</span> <span class="o">&gt;=</span> <span class="mi">1</span>
-        <span class="p">),</span> <span class="s2">"Perturbations per evaluation must be an integer and at least 1."</span>
+        <span class="p">),</span> <span class="s2">&quot;Perturbations per evaluation must be an integer and at least 1.&quot;</span>
         <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
             <span class="n">attr_progress</span><span class="p">:</span> <span class="n">Progress</span>
             <span class="k">if</span> <span class="n">show_progress</span><span class="p">:</span>
@@ -660,8 +666,8 @@ src="/_sphinx/documentation_options.js"></script>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">initial_eval</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Future</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-                    <span class="s2">"when using the attribute function, initial_eval should have "</span>
-                    <span class="sa">f</span><span class="s2">"non-Future type rather than </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">initial_eval</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="s2">&quot;when using the attribute function, initial_eval should have &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;non-Future type rather than </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">initial_eval</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
             <span class="n">initial_eval</span> <span class="o">=</span> <span class="n">_parse_forward_out</span><span class="p">(</span><span class="n">initial_eval</span><span class="p">)</span>
             <span class="p">(</span>
@@ -817,8 +823,8 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="n">attr_progress</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
             <span class="k">assert</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">modified_eval</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Future</span><span class="p">),</span> <span class="p">(</span>
-                <span class="s2">"when use_futures is True, modified_eval should have "</span>
-                <span class="sa">f</span><span class="s2">"non-Future type rather than </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">modified_eval</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                <span class="s2">&quot;when use_futures is True, modified_eval should have &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;non-Future type rather than </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">modified_eval</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
             <span class="c1"># Just do the check once.</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_output_shape_valid</span><span class="p">:</span>
@@ -900,7 +906,7 @@ src="/_sphinx/documentation_options.js"></script>
                     <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,)</span> <span class="o">*</span> <span class="n">input_tensor</span><span class="o">.</span><span class="n">dim</span><span class="p">())</span>
                 <span class="n">tensor_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
 
-                <span class="k">assert</span> <span class="n">baseline</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">"baseline must be provided"</span>
+                <span class="k">assert</span> <span class="n">baseline</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;baseline must be provided&quot;</span>
                 <span class="n">ablated_feature</span> <span class="o">=</span> <span class="n">input_tensor</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
                     <span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span>
                 <span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">baseline</span> <span class="o">*</span> <span class="n">mask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
@@ -918,8 +924,8 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="n">initial_eval_processed</span> <span class="o">=</span> <span class="n">initial_eval</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">initial_eval_processed</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-                    <span class="s2">"initial_eval_to_processed_initial_eval_fut: "</span>
-                    <span class="s2">"initial_eval should be a Tensor"</span>
+                    <span class="s2">&quot;initial_eval_to_processed_initial_eval_fut: &quot;</span>
+                    <span class="s2">&quot;initial_eval should be a Tensor&quot;</span>
                 <span class="p">)</span>
             <span class="n">initial_eval_processed</span> <span class="o">=</span> <span class="n">_parse_forward_out</span><span class="p">(</span><span class="n">initial_eval_processed</span><span class="p">)</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">process_initial_eval</span><span class="p">(</span>
@@ -928,7 +934,7 @@ src="/_sphinx/documentation_options.js"></script>
 
         <span class="k">except</span> <span class="n">FeatureAblationFutureError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">FeatureAblationFutureError</span><span class="p">(</span>
-                <span class="s2">"initial_eval_to_processed_initial_eval_fut func failed"</span>
+                <span class="s2">&quot;initial_eval_to_processed_initial_eval_fut func failed&quot;</span>
             <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
         <span class="k">return</span> <span class="n">result</span>
 
@@ -946,10 +952,10 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Future</span><span class="p">[</span><span class="n">TensorOrTupleOfTensorsGeneric</span><span class="p">]:</span>
-<span class="w">        </span><span class="sa">r</span><span class="sd">"""</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Almost the same as the attribute function, except that it requires a</span>
 <span class="sd">        forward function that returns a Future, and it returns a Future.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Keeps track whether original input is a tuple or not before</span>
         <span class="c1"># converting it into a tuple.</span>
@@ -962,7 +968,7 @@ src="/_sphinx/documentation_options.js"></script>
 
         <span class="k">assert</span> <span class="p">(</span>
             <span class="nb">isinstance</span><span class="p">(</span><span class="n">perturbations_per_eval</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">perturbations_per_eval</span> <span class="o">&gt;=</span> <span class="mi">1</span>
-        <span class="p">),</span> <span class="s2">"Perturbations per evaluation must be an integer and at least 1."</span>
+        <span class="p">),</span> <span class="s2">&quot;Perturbations per evaluation must be an integer and at least 1.&quot;</span>
         <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
             <span class="n">attr_progress</span><span class="p">:</span> <span class="n">Progress</span>
             <span class="k">if</span> <span class="n">show_progress</span><span class="p">:</span>
@@ -993,8 +999,8 @@ src="/_sphinx/documentation_options.js"></script>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">initial_eval</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Future</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-                    <span class="s2">"when using attribute_future, initial_eval should have "</span>
-                    <span class="sa">f</span><span class="s2">"Future type rather than </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">initial_eval</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="s2">&quot;when using attribute_future, initial_eval should have &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Future type rather than </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">initial_eval</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
             <span class="n">processed_initial_eval_fut</span> <span class="o">=</span> <span class="n">initial_eval</span><span class="o">.</span><span class="n">then</span><span class="p">(</span>
@@ -1125,8 +1131,8 @@ src="/_sphinx/documentation_options.js"></script>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">modified_eval</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Future</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-                    <span class="s2">"when using attribute_future, modified_eval should have "</span>
-                    <span class="sa">f</span><span class="s2">"Future type rather than </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">modified_eval</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="s2">&quot;when using attribute_future, modified_eval should have &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Future type rather than </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">modified_eval</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
             <span class="c1"># Need to collect both initial eval and modified_eval</span>
@@ -1187,7 +1193,7 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="n">weights</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">this_weights</span>
         <span class="k">except</span> <span class="n">FeatureAblationFutureError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">FeatureAblationFutureError</span><span class="p">(</span>
-                <span class="s2">"_fut_tuple_to_accumulate_fut_list_cross_tensor failed"</span>
+                <span class="s2">&quot;_fut_tuple_to_accumulate_fut_list_cross_tensor failed&quot;</span>
             <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_attribute_progress_setup</span><span class="p">(</span>
@@ -1202,7 +1208,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="p">)</span>
         <span class="n">total_forwards</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># add 1 for the initial eval</span>
         <span class="n">attr_progress</span> <span class="o">=</span> <span class="n">progress</span><span class="p">(</span>
-            <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> attribution"</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">total_forwards</span>
+            <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> attribution&quot;</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">total_forwards</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">attr_progress</span>
 
@@ -1255,16 +1261,16 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_eval_tuple</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-                    <span class="s2">"eval_fut_to_ablated_out_fut_cross_tensor: "</span>
-                    <span class="s2">"initial_eval_tuple should have 6 elements: "</span>
-                    <span class="s2">"total_attrib, weights, initial_eval, "</span>
-                    <span class="s2">"flattened_initial_eval, n_outputs, attrib_type "</span>
+                    <span class="s2">&quot;eval_fut_to_ablated_out_fut_cross_tensor: &quot;</span>
+                    <span class="s2">&quot;initial_eval_tuple should have 6 elements: &quot;</span>
+                    <span class="s2">&quot;total_attrib, weights, initial_eval, &quot;</span>
+                    <span class="s2">&quot;flattened_initial_eval, n_outputs, attrib_type &quot;</span>
                 <span class="p">)</span>
             <span class="n">modified_eval</span> <span class="o">=</span> <span class="n">_parse_forward_out</span><span class="p">(</span><span class="n">modified_eval</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">modified_eval</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-                    <span class="s2">"_eval_fut_to_ablated_out_fut_cross_tensor: "</span>
-                    <span class="s2">"modified eval should be a Tensor"</span>
+                    <span class="s2">&quot;_eval_fut_to_ablated_out_fut_cross_tensor: &quot;</span>
+                    <span class="s2">&quot;modified eval should be a Tensor&quot;</span>
                 <span class="p">)</span>
             <span class="p">(</span>
                 <span class="n">total_attrib</span><span class="p">,</span>
@@ -1297,7 +1303,7 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="p">)</span>
         <span class="k">except</span> <span class="n">FeatureAblationFutureError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">FeatureAblationFutureError</span><span class="p">(</span>
-                <span class="s2">"_eval_fut_to_ablated_out_fut_cross_tensor func failed"</span>
+                <span class="s2">&quot;_eval_fut_to_ablated_out_fut_cross_tensor func failed&quot;</span>
             <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
         <span class="k">return</span> <span class="n">total_attrib</span><span class="p">,</span> <span class="n">weights</span>
 
@@ -1313,7 +1319,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">attrib_type</span><span class="p">:</span> <span class="n">dtype</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]:</span>
         <span class="c1"># reshape the leading dim for n_feature_perturbed</span>
-        <span class="c1"># flatten each feature's eval outputs into 1D of (n_outputs)</span>
+        <span class="c1"># flatten each feature&#39;s eval outputs into 1D of (n_outputs)</span>
         <span class="n">modified_eval</span> <span class="o">=</span> <span class="n">modified_eval</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">)</span>
         <span class="c1"># eval_diff in shape (n_feature_perturbed, n_outputs)</span>
         <span class="n">eval_diff</span> <span class="o">=</span> <span class="n">flattened_initial_eval</span> <span class="o">-</span> <span class="n">modified_eval</span>
@@ -1335,19 +1341,30 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="k">return</span> <span class="n">total_attrib</span><span class="p">,</span> <span class="n">weights</span></div>
 
 </pre></div>
-</div>
-</div>
-</div>
-<div aria-label="Main" class="sphinxsidebar" role="navigation">
-<div class="sphinxsidebarwrapper">
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../../../../index.html">Captum</a></h1>
-<search id="searchbox" role="search" style="display: none">
-<div class="searchformwrapper">
-<form action="../../../../search.html" class="search" method="get">
-<input aria-labelledby="searchlabel" autocapitalize="off" autocomplete="off" autocorrect="off" name="q" placeholder="Search" spellcheck="false" type="text"/>
-<input type="submit" value="Go"/>
-</form>
-</div>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
@@ -1365,45 +1382,35 @@ src="/_sphinx/documentation_options.js"></script>
 <li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../base_classes.html">Base Classes</a></li>
 </ul>
+
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-<li><a href="../../../../index.html">Documentation overview</a><ul>
-<li><a href="../../../index.html">Module code</a><ul>
-</ul></li>
-</ul></li>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="clearer"></div>
-</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footerSection"><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div class="footerSection"><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/pytorch/captum" data-count-href="https://github.com/pytorch/captum/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Captum on GitHub">captum</a></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright"> Copyright © 2026 Meta Platforms, Inc.</section><script>
-            (function() {
-              var BAD_BASE = '/captum/';
-              if (window.location.origin !== 'https://captum.ai') {
-                var pathname = window.location.pathname;
-                var newPathname = pathname.slice(pathname.indexOf(BAD_BASE) === 0 ? BAD_BASE.length : 1);
-                var newLocation = 'https://captum.ai/' + newPathname;
-                console.log('redirecting to ' + newLocation);
-                window.location.href = newLocation;
-              }
-            })();
-          </script></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
-                document.addEventListener('keyup', function(e) {
-                  if (e.target !== document.body) {
-                    return;
-                  }
-                  // keyCode for '/' (slash)
-                  if (e.keyCode === 191) {
-                    const search = document.getElementById('search_input_react');
-                    search && search.focus();
-                  }
-                });
-              </script><script>
-              var search = docsearch({
-                
-                apiKey: '207c27d819f967749142d8611de7cb19',
-                indexName: 'captum',
-                inputSelector: '#search_input_react'
-              });
-            </script></body></html>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

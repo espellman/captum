@@ -1,35 +1,41 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Captum · Model Interpretability for PyTorch</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Model Interpretability for PyTorch"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Captum · Model Interpretability for PyTorch"/><meta property="og:type" content="website"/><meta property="og:url" content="https://captum.ai/"/><meta property="og:description" content="Model Interpretability for PyTorch"/><meta property="og:image" content="https://captum.ai/img/captum-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://captum.ai/img/captum.png"/><link rel="shortcut icon" href="/img/captum.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!DOCTYPE html>
 
-              ga('create', 'UA-44373548-48', 'auto');
-              ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/code_block_buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
-        document.addEventListener('DOMContentLoaded', function() {
-          addBackToTop(
-            {"zIndex":100}
-          )
-        });
-        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/captum_logo.svg" alt="Captum"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/tutorials/" target="_self">Tutorials</a></li><li class=""><a href="/api/" target="_self">API Reference</a></li><li class=""><a href="https://github.com/pytorch/captum" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div>
-<script type="text/javascript" id="documentation_options" data-url_root="./"
-src="/_sphinx/documentation_options.js"></script>
-<script type="text/javascript" src="/_sphinx/jquery.js"></script>
-<script type="text/javascript" src="/_sphinx/underscore.js"></script>
-<script type="text/javascript" src="/_sphinx/doctools.js"></script>
-<script type="text/javascript" src="/_sphinx/language_data.js"></script>
-<script type="text/javascript" src="/_sphinx/searchtools.js"></script>
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>captum.attr._utils.interpretable_input &#8212; Captum  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/katex-math.css?v=05624691" />
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/katex.min.js?v=5cc8ed51"></script>
+    <script src="../../../../_static/auto-render.min.js?v=af98beb9"></script>
+    <script src="../../../../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
 
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-<script src="/_sphinx/katex_autorenderer.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-<div class="sphinx wrapper"><div class="document">
-<div class="documentwrapper">
-<div class="bodywrapper">
-<div class="body" role="main">
-<h1>Source code for captum.attr._utils.interpretable_input</h1><div class="highlight"><pre>
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for captum.attr._utils.interpretable_input</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (c) Meta Platforms, Inc. and affiliates.</span>
 <span class="c1">#</span>
 <span class="c1"># This source code is licensed under the BSD-style license found in the</span>
@@ -66,11 +72,11 @@ src="/_sphinx/documentation_options.js"></script>
     <span class="n">input_shape</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Scatter the attribution of the interpretable features to the model input shape</span>
 <span class="sd">    by mask, if the interpretable features are the mask groups of the raw</span>
 <span class="sd">    input elements,</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># itp_attr in shape(*output_dims, n_itp_features)</span>
     <span class="n">output_dims</span> <span class="o">=</span> <span class="n">itp_attr</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -120,15 +126,15 @@ src="/_sphinx/documentation_options.js"></script>
 <div class="viewcode-block" id="InterpretableInput">
 <a class="viewcode-back" href="../../../../utilities.html#captum.attr.InterpretableInput">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">InterpretableInput</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    InterpretableInput is an adapter for different kinds of model inputs to</span>
-<span class="sd">    work in Captum's attribution methods. Generally, attribution methods of Captum</span>
+<span class="sd">    work in Captum&#39;s attribution methods. Generally, attribution methods of Captum</span>
 <span class="sd">    assume the inputs are numerical PyTorch tensors whose 1st dimension must be batch</span>
 <span class="sd">    size and each index in the rest of dimensions is an interpretable feature. But this</span>
 <span class="sd">    is not always true in practice. First, the model may take inputs of formats other</span>
 <span class="sd">    than tensor that also require attributions. For example, a model with encapsulated</span>
 <span class="sd">    tokenizer can directly take string as input. Second, what is considered as</span>
-<span class="sd">    an interpretable feature always depends on the actual application and the user's</span>
+<span class="sd">    an interpretable feature always depends on the actual application and the user&#39;s</span>
 <span class="sd">    desire. For example, the interpretable feature of an image tensor can either be</span>
 <span class="sd">    each pixel or some segments. For text, users may see the entire string as one</span>
 <span class="sd">    interpretable feature or view each word as one interpretable feature. This class</span>
@@ -139,7 +145,7 @@ src="/_sphinx/documentation_options.js"></script>
 
 <span class="sd">    The concept Interpretable Input mainly comes from the following two papers:</span>
 
-<span class="sd">    `"Why Should I Trust You?": Explaining the Predictions of Any Classifier</span>
+<span class="sd">    `&quot;Why Should I Trust You?&quot;: Explaining the Predictions of Any Classifier</span>
 <span class="sd">    &lt;https://arxiv.org/abs/1602.04938&gt;`_</span>
 
 <span class="sd">    `A Unified Approach to Interpreting Model Predictions</span>
@@ -149,10 +155,10 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">    input. It can be represented as a mapping function:</span>
 
 <span class="sd">    .. math::</span>
-<span class="sd">        x = h_x(x')</span>
+<span class="sd">        x = h_x(x&#39;)</span>
 
 <span class="sd">    where :math:`x` is the model input, which can be anything that the model consumes;</span>
-<span class="sd">    :math:`x'` is the interpretable input used in the attribution algorithms</span>
+<span class="sd">    :math:`x&#39;` is the interpretable input used in the attribution algorithms</span>
 <span class="sd">    (it must be a PyTorch tensor in Captum), which is often</span>
 <span class="sd">    binary indicating the “presence” or “absence”; :math:`h_x` is the</span>
 <span class="sd">    transformer. It is supposed to work with perturbation-based attribution methods,</span>
@@ -166,7 +172,7 @@ src="/_sphinx/documentation_options.js"></script>
 
 <span class="sd">    (We expect to support InterpretableInput in all attribution methods, but it</span>
 <span class="sd">    is only allowed in certain attribution classes like LLMAttribution for now.)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">n_itp_features</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -175,13 +181,13 @@ src="/_sphinx/documentation_options.js"></script>
 <a class="viewcode-back" href="../../../../utilities.html#captum.attr.InterpretableInput.to_tensor">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">to_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the interpretable representation of this input as a tensor</span>
 
 <span class="sd">        Returns:</span>
 
 <span class="sd">            itp_tensor (Tensor): interpretable tensor</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
 
@@ -189,7 +195,7 @@ src="/_sphinx/documentation_options.js"></script>
 <a class="viewcode-back" href="../../../../utilities.html#captum.attr.InterpretableInput.to_model_input">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">to_model_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perturbed_tensor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the (perturbed) input in the format required by the model</span>
 <span class="sd">        based on the given (perturbed) interpretable representation.</span>
 
@@ -205,14 +211,14 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">        Returns:</span>
 
 <span class="sd">            model_input (Any): model input passed to the forward function</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="InterpretableInput.format_attr">
 <a class="viewcode-back" href="../../../../utilities.html#captum.attr.InterpretableInput.format_attr">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">format_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">itp_attr</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Format the attribution of the interpretable feature if needed.</span>
 <span class="sd">        The way of formatting depends on the specific interpretable input type.</span>
 <span class="sd">        A common use is if the interpretable features are the mask groups of the raw</span>
@@ -226,7 +232,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">        Returns:</span>
 
 <span class="sd">                attr (Tensor): formatted attribution</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">itp_attr</span></div>
 </div>
 
@@ -235,7 +241,7 @@ src="/_sphinx/documentation_options.js"></script>
 <div class="viewcode-block" id="TextTemplateInput">
 <a class="viewcode-back" href="../../../../utilities.html#captum.attr.TextTemplateInput">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TextTemplateInput</span><span class="p">(</span><span class="n">InterpretableInput</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    TextTemplateInput is an implementation of InterpretableInput for text inputs, whose</span>
 <span class="sd">    interpretable features are certain segments (e.g., words, phrases) of the text.</span>
 <span class="sd">    It takes a template string (or function) to define the feature segmentats</span>
@@ -264,18 +270,18 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">    Examples::</span>
 
 <span class="sd">        &gt;&gt;&gt; text_inp = TextTemplateInput(</span>
-<span class="sd">        &gt;&gt;&gt;     template="{} feels {} right now",</span>
-<span class="sd">        &gt;&gt;&gt;     values=["He", "depressed"],</span>
-<span class="sd">        &gt;&gt;&gt;     baselines=["It", "neutral"],</span>
+<span class="sd">        &gt;&gt;&gt;     template=&quot;{} feels {} right now&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;     values=[&quot;He&quot;, &quot;depressed&quot;],</span>
+<span class="sd">        &gt;&gt;&gt;     baselines=[&quot;It&quot;, &quot;neutral&quot;],</span>
 <span class="sd">        &gt;&gt;&gt; )</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; text_inp.to_tensor()</span>
 <span class="sd">        &gt;&gt;&gt; # torch.tensor([[1, 1]])</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; text_inp.to_model_input(torch.tensor([[0, 1]]))</span>
-<span class="sd">        &gt;&gt;&gt; # "It feels depressed right now"</span>
+<span class="sd">        &gt;&gt;&gt; # &quot;It feels depressed right now&quot;</span>
 
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="n">dict_keys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -305,7 +311,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span>
                 <span class="n">values</span><span class="p">,</span> <span class="nb">list</span>
-            <span class="p">),</span> <span class="sa">f</span><span class="s2">"the values must be either a list or a dict, received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;the values must be either a list or a dict, received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="n">dict_keys</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
@@ -315,22 +321,22 @@ src="/_sphinx/documentation_options.js"></script>
 
         <span class="k">if</span> <span class="n">baselines</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># default baseline is to remove the element</span>
-            <span class="n">baselines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">""</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="n">baselines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">baselines</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">dict_keys</span><span class="p">:</span>
                 <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">baselines</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="p">(</span>
-                    <span class="s2">"if values is a dict, the baselines must also be a dict "</span>
-                    <span class="s2">"or a callable which return a dict, "</span>
-                    <span class="sa">f</span><span class="s2">"received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">baselines</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="s2">&quot;if values is a dict, the baselines must also be a dict &quot;</span>
+                    <span class="s2">&quot;or a callable which return a dict, &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">baselines</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
                 <span class="c1"># convert dict to list</span>
                 <span class="n">baselines</span> <span class="o">=</span> <span class="p">[</span><span class="n">baselines</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">dict_keys</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">baselines</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span> <span class="p">(</span>
-                    <span class="s2">"if values is a list, the baselines must also be a list "</span>
-                    <span class="s2">"or a callable which return a list, "</span>
-                    <span class="sa">f</span><span class="s2">"received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">baselines</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="s2">&quot;if values is a list, the baselines must also be a list &quot;</span>
+                    <span class="s2">&quot;or a callable which return a list, &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">baselines</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">baselines</span> <span class="o">=</span> <span class="n">baselines</span>
@@ -340,8 +346,8 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_keys</span><span class="p">:</span>
                 <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="p">(</span>
-                    <span class="s2">"if values is dict, the mask must also be a dict, "</span>
-                    <span class="sa">f</span><span class="s2">"received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="s2">&quot;if values is dict, the mask must also be a dict, &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
                 <span class="c1"># convert dict to list</span>
@@ -366,8 +372,8 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="n">template</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">format</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">assert</span> <span class="nb">callable</span><span class="p">(</span><span class="n">template</span><span class="p">),</span> <span class="p">(</span>
-                <span class="s2">"the template must be either a string or a callable, "</span>
-                <span class="sa">f</span><span class="s2">"received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                <span class="s2">&quot;the template must be either a string or a callable, &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">template</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
             <span class="n">template</span> <span class="o">=</span> <span class="n">template</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">format_fn</span> <span class="o">=</span> <span class="n">template</span>
@@ -393,14 +399,14 @@ src="/_sphinx/documentation_options.js"></script>
                 <span class="n">baselines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">baselines</span><span class="p">()</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_keys</span><span class="p">:</span>
                     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">baselines</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="p">(</span>
-                        <span class="s2">"if values is a dict and the baselines is a callable"</span>
-                        <span class="sa">f</span><span class="s2">"it must return a dict, received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">baselines</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                        <span class="s2">&quot;if values is a dict and the baselines is a callable&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;it must return a dict, received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">baselines</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                     <span class="p">)</span>
                     <span class="n">baselines</span> <span class="o">=</span> <span class="p">[</span><span class="n">baselines</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_keys</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">baselines</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span> <span class="p">(</span>
-                        <span class="s2">"if values is a list and the baselines is a callable"</span>
-                        <span class="sa">f</span><span class="s2">"it must return a list, received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">baselines</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                        <span class="s2">&quot;if values is a list and the baselines is a callable&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;it must return a list, received: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">baselines</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                     <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">baselines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">baselines</span>
@@ -443,28 +449,28 @@ src="/_sphinx/documentation_options.js"></script>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">TextSegmentInput</span><span class="p">(</span><span class="n">TextTemplateInput</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    TextSegmentInput is an implementation of InterpretableInput that automatically</span>
 <span class="sd">    segments a text string into interpretable features based on a segmentation level.</span>
 <span class="sd">    It builds on TextTemplateInput by auto-generating the template and values from</span>
-<span class="sd">    the raw text, so users don't need to manually define them.</span>
+<span class="sd">    the raw text, so users don&#39;t need to manually define them.</span>
 
 <span class="sd">    Supported segmentation levels:</span>
 
-<span class="sd">    - ``"word"``: split on whitespace and common punctuation</span>
-<span class="sd">      (``. , ! ? ; : ' " - ( ) [ ] { }``). Punctuation stays in the template.</span>
-<span class="sd">    - ``"sentence"``: split after sentence-ending punctuation (``.``, ``!``, ``?``)</span>
+<span class="sd">    - ``&quot;word&quot;``: split on whitespace and common punctuation</span>
+<span class="sd">      (``. , ! ? ; : &#39; &quot; - ( ) [ ] { }``). Punctuation stays in the template.</span>
+<span class="sd">    - ``&quot;sentence&quot;``: split after sentence-ending punctuation (``.``, ``!``, ``?``)</span>
 <span class="sd">      or on newlines</span>
-<span class="sd">    - ``"line"``: split on newlines</span>
-<span class="sd">    - ``"paragraph"``: split on blank lines (one or more empty lines)</span>
+<span class="sd">    - ``&quot;line&quot;``: split on newlines</span>
+<span class="sd">    - ``&quot;paragraph&quot;``: split on blank lines (one or more empty lines)</span>
 
 <span class="sd">    Args:</span>
 
 <span class="sd">        text (str): the raw text to segment</span>
 <span class="sd">        level (str, optional): the segmentation level.</span>
-<span class="sd">                Default: "word"</span>
+<span class="sd">                Default: &quot;word&quot;</span>
 <span class="sd">        baselines (str or None, optional): the baseline value for each segment</span>
-<span class="sd">                when it is "absent". If None, the segment is removed (empty string).</span>
+<span class="sd">                when it is &quot;absent&quot;. If None, the segment is removed (empty string).</span>
 <span class="sd">                If a string, it is used as the baseline for all segments.</span>
 <span class="sd">                Default: None</span>
 <span class="sd">        group_size (int, optional): group every ``group_size`` consecutive</span>
@@ -476,22 +482,22 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">    Examples::</span>
 
 <span class="sd">        &gt;&gt;&gt; seg_inp = TextSegmentInput(</span>
-<span class="sd">        &gt;&gt;&gt;     "Hello, world. Welcome!",</span>
-<span class="sd">        &gt;&gt;&gt;     level="word",</span>
+<span class="sd">        &gt;&gt;&gt;     &quot;Hello, world. Welcome!&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;     level=&quot;word&quot;,</span>
 <span class="sd">        &gt;&gt;&gt; )</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; seg_inp.values</span>
-<span class="sd">        &gt;&gt;&gt; # ["Hello", "world", "Welcome"]</span>
+<span class="sd">        &gt;&gt;&gt; # [&quot;Hello&quot;, &quot;world&quot;, &quot;Welcome&quot;]</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; seg_inp.to_model_input()</span>
-<span class="sd">        &gt;&gt;&gt; # "Hello, world. Welcome!"</span>
+<span class="sd">        &gt;&gt;&gt; # &quot;Hello, world. Welcome!&quot;</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; seg_inp.to_model_input(torch.tensor([[1, 0, 1]]))</span>
-<span class="sd">        &gt;&gt;&gt; # "Hello, . Welcome!"</span>
+<span class="sd">        &gt;&gt;&gt; # &quot;Hello, . Welcome!&quot;</span>
 
 <span class="sd">        &gt;&gt;&gt; seg_inp = TextSegmentInput(</span>
-<span class="sd">        &gt;&gt;&gt;     "one two three four five six",</span>
-<span class="sd">        &gt;&gt;&gt;     level="word",</span>
+<span class="sd">        &gt;&gt;&gt;     &quot;one two three four five six&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;     level=&quot;word&quot;,</span>
 <span class="sd">        &gt;&gt;&gt;     group_size=2,</span>
 <span class="sd">        &gt;&gt;&gt; )</span>
 <span class="sd">        &gt;&gt;&gt;</span>
@@ -499,28 +505,28 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">        &gt;&gt;&gt; # 3</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; seg_inp.to_model_input(torch.tensor([[1, 0, 1]]))</span>
-<span class="sd">        &gt;&gt;&gt; # "one two   five six"</span>
+<span class="sd">        &gt;&gt;&gt; # &quot;one two   five six&quot;</span>
 
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">SPLIT_PATTERNS</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">"word"</span><span class="p">:</span> <span class="sa">r</span><span class="s2">"([\s.,!?;:'</span><span class="se">\"</span><span class="s2">\-()\[\]</span><span class="si">{}</span><span class="s2">]+)"</span><span class="p">,</span>
-        <span class="s2">"sentence"</span><span class="p">:</span> <span class="sa">r</span><span class="s2">"((?&lt;=[.!?])\s+|\n+)"</span><span class="p">,</span>
-        <span class="s2">"line"</span><span class="p">:</span> <span class="sa">r</span><span class="s2">"(\n)"</span><span class="p">,</span>
-        <span class="s2">"paragraph"</span><span class="p">:</span> <span class="sa">r</span><span class="s2">"(\n\s*\n)"</span><span class="p">,</span>
+        <span class="s2">&quot;word&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;([\s.,!?;:&#39;</span><span class="se">\&quot;</span><span class="s2">\-()\[\]</span><span class="si">{}</span><span class="s2">]+)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sentence&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;((?&lt;=[.!?])\s+|\n+)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;line&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;(\n)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paragraph&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;(\n\s*\n)&quot;</span><span class="p">,</span>
     <span class="p">}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"word"</span><span class="p">,</span>
+        <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;word&quot;</span><span class="p">,</span>
         <span class="n">baselines</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">group_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">segments</span><span class="p">,</span> <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
 
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"text must contain at least one segment"</span>
-        <span class="k">assert</span> <span class="n">group_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"group_size must be a positive integer"</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;text must contain at least one segment&quot;</span>
+        <span class="k">assert</span> <span class="n">group_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;group_size must be a positive integer&quot;</span>
 
         <span class="n">baseline_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">baselines</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -543,16 +549,16 @@ src="/_sphinx/documentation_options.js"></script>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_segment_text</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Segment text by the given level and return (segments, template).</span>
 
 <span class="sd">        Uses ``re.split`` with a capture group so delimiters are preserved.</span>
 <span class="sd">        Segments become values and delimiters become literal parts of the</span>
 <span class="sd">        template string with ``{}`` placeholders where segments were.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">TextSegmentInput</span><span class="o">.</span><span class="n">SPLIT_PATTERNS</span><span class="p">,</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"unsupported segmentation level: </span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">, "</span>
-            <span class="sa">f</span><span class="s2">"must be one of </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">TextSegmentInput</span><span class="o">.</span><span class="n">SPLIT_PATTERNS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span>
+            <span class="sa">f</span><span class="s2">&quot;unsupported segmentation level: </span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;must be one of </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">TextSegmentInput</span><span class="o">.</span><span class="n">SPLIT_PATTERNS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
         <span class="n">pattern</span> <span class="o">=</span> <span class="n">TextSegmentInput</span><span class="o">.</span><span class="n">SPLIT_PATTERNS</span><span class="p">[</span><span class="n">level</span><span class="p">]</span>
@@ -567,23 +573,23 @@ src="/_sphinx/documentation_options.js"></script>
                 <span class="c1"># segment position</span>
                 <span class="k">if</span> <span class="n">part</span><span class="p">:</span>
                     <span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
-                    <span class="n">template_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="n">template_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="c1"># empty segment: skip (no placeholder)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># delimiter position: always goes into the template</span>
                 <span class="n">template_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">escape_braces</span><span class="p">(</span><span class="n">part</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">segments</span><span class="p">,</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">template_parts</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">segments</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">template_parts</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_escape_braces</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"{"</span><span class="p">,</span> <span class="s2">"{{"</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"}"</span><span class="p">,</span> <span class="s2">"}}"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">,</span> <span class="s2">&quot;{{&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="s2">&quot;}}&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="TextTokenInput">
 <a class="viewcode-back" href="../../../../utilities.html#captum.attr.TextTokenInput">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TextTokenInput</span><span class="p">(</span><span class="n">InterpretableInput</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    TextTokenInput is an implementation of InterpretableInput for text inputs, whose</span>
 <span class="sd">    interpretable features are the tokens of the text with respect to a given tokenizer.</span>
 <span class="sd">    It is initiated with the string form of the input text and the corresponding</span>
@@ -602,7 +608,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                is commonly used for unknown token.</span>
 <span class="sd">                Default: 0</span>
 <span class="sd">        skip_tokens (List[int] or List[str], optional): the tokens to skip in the</span>
-<span class="sd">                the input's interpretable representation. Use this argument to define</span>
+<span class="sd">                the input&#39;s interpretable representation. Use this argument to define</span>
 <span class="sd">                uninterested tokens, commonly like special tokens, e.g., sos, and unk.</span>
 <span class="sd">                It can be a list of strings of the tokens or a list of integers of the</span>
 <span class="sd">                token ids.</span>
@@ -610,17 +616,17 @@ src="/_sphinx/documentation_options.js"></script>
 
 <span class="sd">    Examples::</span>
 
-<span class="sd">        &gt;&gt;&gt; text_inp = TextTokenInput("This is a test.", tokenizer)</span>
+<span class="sd">        &gt;&gt;&gt; text_inp = TextTokenInput(&quot;This is a test.&quot;, tokenizer)</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; text_inp.to_tensor()</span>
 <span class="sd">        &gt;&gt;&gt; # the shape dependens on the tokenizer</span>
-<span class="sd">        &gt;&gt;&gt; # assuming it is broken into ["&lt;s&gt;", "This", "is", "a", "test", "."],</span>
+<span class="sd">        &gt;&gt;&gt; # assuming it is broken into [&quot;&lt;s&gt;&quot;, &quot;This&quot;, &quot;is&quot;, &quot;a&quot;, &quot;test&quot;, &quot;.&quot;],</span>
 <span class="sd">        &gt;&gt;&gt; # torch.tensor([[1, 6]])</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; text_inp.to_model_input(torch.tensor([[0, 1]]))</span>
 <span class="sd">        &gt;&gt;&gt; # torch.tensor([[1, 6]])</span>
 
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">inp_tensor</span><span class="p">:</span> <span class="n">Tensor</span>
     <span class="n">itp_tensor</span><span class="p">:</span> <span class="n">Tensor</span>
@@ -637,7 +643,7 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="n">baselines</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># usually UNK</span>
         <span class="n">skip_tokens</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">inp_tensor</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">)</span>
+        <span class="n">inp_tensor</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
 
         <span class="c1"># input tensor into the model of token ids</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inp_tensor</span> <span class="o">=</span> <span class="n">inp_tensor</span>
@@ -719,7 +725,7 @@ src="/_sphinx/documentation_options.js"></script>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ImageMaskInput</span><span class="p">(</span><span class="n">InterpretableInput</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ImageMaskInput is an implementation of InterpretableInput for the image, whose</span>
 <span class="sd">    interpretable features are certain image segments (e.g., groups of pixels).</span>
 <span class="sd">    It takes an image and its corresponding segmentation masks .</span>
@@ -762,12 +768,12 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">        &gt;&gt;&gt; def processor_fn(image):</span>
 <span class="sd">        &gt;&gt;&gt;    messages = [</span>
 <span class="sd">        &gt;&gt;&gt;        {</span>
-<span class="sd">        &gt;&gt;&gt;            "role": "user",</span>
-<span class="sd">        &gt;&gt;&gt;            "content": [</span>
-<span class="sd">        &gt;&gt;&gt;                {"type": "image"},</span>
+<span class="sd">        &gt;&gt;&gt;            &quot;role&quot;: &quot;user&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;            &quot;content&quot;: [</span>
+<span class="sd">        &gt;&gt;&gt;                {&quot;type&quot;: &quot;image&quot;},</span>
 <span class="sd">        &gt;&gt;&gt;                {</span>
-<span class="sd">        &gt;&gt;&gt;                    "type": "text",</span>
-<span class="sd">        &gt;&gt;&gt;                    "text": "Please describe the image in detail.",</span>
+<span class="sd">        &gt;&gt;&gt;                    &quot;type&quot;: &quot;text&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;                    &quot;text&quot;: &quot;Please describe the image in detail.&quot;,</span>
 <span class="sd">        &gt;&gt;&gt;                },</span>
 <span class="sd">        &gt;&gt;&gt;            ],</span>
 <span class="sd">        &gt;&gt;&gt;        }</span>
@@ -780,10 +786,10 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">        &gt;&gt;&gt;    return processor(</span>
 <span class="sd">        &gt;&gt;&gt;        text=prompt,</span>
 <span class="sd">        &gt;&gt;&gt;        images=image,</span>
-<span class="sd">        &gt;&gt;&gt;        return_tensors="pt",</span>
+<span class="sd">        &gt;&gt;&gt;        return_tensors=&quot;pt&quot;,</span>
 <span class="sd">        &gt;&gt;&gt;    ).to(model.device)</span>
 <span class="sd">        &gt;&gt;&gt;</span>
-<span class="sd">        &gt;&gt;&gt; image = Image.open("test.jpg")</span>
+<span class="sd">        &gt;&gt;&gt; image = Image.open(&quot;test.jpg&quot;)</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; # Split horizontally: left half = 0, right half = 1</span>
 <span class="sd">        &gt;&gt;&gt; mask = torch.zeros(image.size[::-1], dtype=torch.int32)</span>
@@ -801,7 +807,7 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">        &gt;&gt;&gt; text_inp.to_model_input(torch.tensor([[0, 1]]))</span>
 <span class="sd">        &gt;&gt;&gt; # model inputs where the right half of the image is masked out</span>
 
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">image</span><span class="p">:</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Tensor</span>
@@ -833,8 +839,8 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="c1"># Validate that all masks in mask_list have the correct shape</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mask_list</span><span class="p">):</span>
                 <span class="k">assert</span> <span class="n">m</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">image_shape</span><span class="p">,</span> <span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">"mask_list[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] shape </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> must match "</span>
-                    <span class="sa">f</span><span class="s2">"image shape </span><span class="si">{</span><span class="n">image_shape</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="sa">f</span><span class="s2">&quot;mask_list[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] shape </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> must match &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;image shape </span><span class="si">{</span><span class="n">image_shape</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
             <span class="n">mask_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mask_list</span><span class="p">)))</span>
@@ -849,7 +855,7 @@ src="/_sphinx/documentation_options.js"></script>
                 <span class="c1"># Validate that mask size matches image size</span>
                 <span class="k">assert</span> <span class="p">(</span>
                     <span class="n">mask</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">image_shape</span>
-                <span class="p">),</span> <span class="sa">f</span><span class="s2">"mask shape </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> must match image shape </span><span class="si">{</span><span class="n">image_shape</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;mask shape </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> must match image shape </span><span class="si">{</span><span class="n">image_shape</span><span class="si">}</span><span class="s2">&quot;</span>
 
             <span class="n">mask_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
@@ -863,7 +869,7 @@ src="/_sphinx/documentation_options.js"></script>
 
         <span class="c1"># temporarily for compatibility with AttributionResult</span>
         <span class="c1"># which use the values for plot legends</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"image_feature_</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">mid</span> <span class="ow">in</span> <span class="n">mask_ids</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;image_feature_</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">mid</span> <span class="ow">in</span> <span class="n">mask_ids</span><span class="p">]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">original_model_inputs</span> <span class="o">=</span> <span class="n">processor_fn</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
@@ -887,36 +893,36 @@ src="/_sphinx/documentation_options.js"></script>
                     <span class="n">mask_positions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">==</span> <span class="n">mask_id</span>
                     <span class="n">img_array</span><span class="p">[</span><span class="n">mask_positions</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">baseline</span>
 
-        <span class="n">perturbed_image</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">img_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"uint8"</span><span class="p">))</span>
+        <span class="n">perturbed_image</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">img_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor_fn</span><span class="p">(</span><span class="n">perturbed_image</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_mask_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the list of binary masks for each interpretable feature.</span>
 <span class="sd">        If mask_list is provided, return it directly. Otherwise, create</span>
 <span class="sd">        a list of binary masks from the mask tensor.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List[Tensor]: list of binary masks, one for each interpretable feature</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_list</span> <span class="ow">or</span> <span class="p">[</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">==</span> <span class="n">mask_id</span> <span class="k">for</span> <span class="n">mask_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_id_to_idx</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
         <span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">format_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">itp_attr</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Attribution for interpretable image segments</span>
 <span class="sd">        Returns: 2D tensor of shape (1, n_itp_features)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">itp_attr</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">format_pixel_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">itp_attr</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Attribution for image pixels.</span>
 <span class="sd">        When mask_list is used, attributions from overlapping features are summed.</span>
 <span class="sd">        Returns: 3D tensor of shape (1, height, width)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">device</span> <span class="o">=</span> <span class="n">itp_attr</span><span class="o">.</span><span class="n">device</span>
         <span class="n">image_shape</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># (height, width)</span>
 
@@ -952,8 +958,8 @@ src="/_sphinx/documentation_options.js"></script>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">plot_mask_overlay</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">border_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">show_legends</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">"Figure"</span><span class="p">,</span> <span class="s2">"Axes"</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">"""</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;Figure&quot;</span><span class="p">,</span> <span class="s2">&quot;Axes&quot;</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        util to help visualize the mask segementation</span>
 
 <span class="sd">        Args:</span>
@@ -963,14 +969,14 @@ src="/_sphinx/documentation_options.js"></script>
 <span class="sd">                          Set to 0 to disable borders. Default is 0.</span>
 <span class="sd">            show_legends: If True, display the mask id for each segment at its</span>
 <span class="sd">                          centroid. Default is True.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
         <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
         <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">"white"</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
 
         <span class="c1"># random colors for all interpretable features</span>
         <span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.6</span>
@@ -996,7 +1002,7 @@ src="/_sphinx/documentation_options.js"></script>
             <span class="k">if</span> <span class="n">show_legends</span><span class="p">:</span>
                 <span class="n">draw_mask_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">mask_np</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>
 
-        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1004,19 +1010,30 @@ src="/_sphinx/documentation_options.js"></script>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div aria-label="Main" class="sphinxsidebar" role="navigation">
-<div class="sphinxsidebarwrapper">
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../../../../index.html">Captum</a></h1>
-<search id="searchbox" role="search" style="display: none">
-<div class="searchformwrapper">
-<form action="../../../../search.html" class="search" method="get">
-<input aria-labelledby="searchlabel" autocapitalize="off" autocomplete="off" autocorrect="off" name="q" placeholder="Search" spellcheck="false" type="text"/>
-<input type="submit" value="Go"/>
-</form>
-</div>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
@@ -1034,45 +1051,35 @@ src="/_sphinx/documentation_options.js"></script>
 <li class="toctree-l1"><a class="reference internal" href="../../../../utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../base_classes.html">Base Classes</a></li>
 </ul>
+
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-<li><a href="../../../../index.html">Documentation overview</a><ul>
-<li><a href="../../../index.html">Module code</a><ul>
-</ul></li>
-</ul></li>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="clearer"></div>
-</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footerSection"><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div class="footerSection"><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/pytorch/captum" data-count-href="https://github.com/pytorch/captum/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Captum on GitHub">captum</a></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright"> Copyright © 2026 Meta Platforms, Inc.</section><script>
-            (function() {
-              var BAD_BASE = '/captum/';
-              if (window.location.origin !== 'https://captum.ai') {
-                var pathname = window.location.pathname;
-                var newPathname = pathname.slice(pathname.indexOf(BAD_BASE) === 0 ? BAD_BASE.length : 1);
-                var newLocation = 'https://captum.ai/' + newPathname;
-                console.log('redirecting to ' + newLocation);
-                window.location.href = newLocation;
-              }
-            })();
-          </script></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
-                document.addEventListener('keyup', function(e) {
-                  if (e.target !== document.body) {
-                    return;
-                  }
-                  // keyCode for '/' (slash)
-                  if (e.keyCode === 191) {
-                    const search = document.getElementById('search_input_react');
-                    search && search.focus();
-                  }
-                });
-              </script><script>
-              var search = docsearch({
-                
-                apiKey: '207c27d819f967749142d8611de7cb19',
-                indexName: 'captum',
-                inputSelector: '#search_input_react'
-              });
-            </script></body></html>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

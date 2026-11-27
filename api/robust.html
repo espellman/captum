@@ -1,35 +1,44 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Captum · Model Interpretability for PyTorch</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Model Interpretability for PyTorch"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Captum · Model Interpretability for PyTorch"/><meta property="og:type" content="website"/><meta property="og:url" content="https://captum.ai/"/><meta property="og:description" content="Model Interpretability for PyTorch"/><meta property="og:image" content="https://captum.ai/img/captum-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://captum.ai/img/captum.png"/><link rel="shortcut icon" href="/img/captum.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!DOCTYPE html>
 
-              ga('create', 'UA-44373548-48', 'auto');
-              ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/code_block_buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
-        document.addEventListener('DOMContentLoaded', function() {
-          addBackToTop(
-            {"zIndex":100}
-          )
-        });
-        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/captum_logo.svg" alt="Captum"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/introduction" target="_self">Docs</a></li><li class=""><a href="/tutorials/" target="_self">Tutorials</a></li><li class=""><a href="/api/" target="_self">API Reference</a></li><li class=""><a href="https://github.com/pytorch/captum" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div>
-<script type="text/javascript" id="documentation_options" data-url_root="./"
-src="/_sphinx/documentation_options.js"></script>
-<script type="text/javascript" src="/_sphinx/jquery.js"></script>
-<script type="text/javascript" src="/_sphinx/underscore.js"></script>
-<script type="text/javascript" src="/_sphinx/doctools.js"></script>
-<script type="text/javascript" src="/_sphinx/language_data.js"></script>
-<script type="text/javascript" src="/_sphinx/searchtools.js"></script>
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
-<script src="/_sphinx/katex_autorenderer.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
-<div class="sphinx wrapper"><div class="document">
-<div class="documentwrapper">
-<div class="bodywrapper">
-<div class="body" role="main">
-<section id="robustness">
+    <title>Robustness &#8212; Captum  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=05624691" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/katex.min.js?v=5cc8ed51"></script>
+    <script src="_static/auto-render.min.js?v=af98beb9"></script>
+    <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Concept-based Interpretability" href="concept.html" />
+    <link rel="prev" title="Metrics" href="metrics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="robustness">
 <h1>Robustness<a class="headerlink" href="#robustness" title="Link to this heading">¶</a></h1>
 <section id="fgsm">
 <h2>FGSM<a class="headerlink" href="#fgsm" title="Link to this heading">¶</a></h2>
@@ -39,11 +48,11 @@ src="/_sphinx/documentation_options.js"></script>
 <dd><p>Fast Gradient Sign Method is a one-step method that can generate
 adversarial examples.</p>
 <p>For non-targeted attack, the formulation is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">' = x + epsilon * sign(gradient of L(theta, x, y))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; = x + epsilon * sign(gradient of L(theta, x, y))</span>
 </pre></div>
 </div>
 <p>For targeted attack on t, the formulation is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">' = x - epsilon * sign(gradient of L(theta, x, t))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39; = x - epsilon * sign(gradient of L(theta, x, t))</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">L(theta,</span> <span class="pre">x,</span> <span class="pre">y)</span></code> is the model’s loss function with respect to model
@@ -60,10 +69,10 @@ computed. The loss function should take in outputs of the
 model and labels, and return a loss tensor.
 The default loss function is negative log.</p></li>
 <li><p><strong>lower_bound</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em>, </em><em>optional</em>) – Lower bound of input values.
-Default: <code class="docutils literal notranslate"><span class="pre">float("-inf")</span></code></p></li>
+Default: <code class="docutils literal notranslate"><span class="pre">float(&quot;-inf&quot;)</span></code></p></li>
 <li><p><strong>upper_bound</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em>, </em><em>optional</em>) – Upper bound of input values.
 e.g. image pixels must be in the range 0-255
-Default: <code class="docutils literal notranslate"><span class="pre">float("inf")</span></code></p></li>
+Default: <code class="docutils literal notranslate"><span class="pre">float(&quot;inf&quot;)</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -79,6 +88,7 @@ custom use cases if necessary.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="captum.robust.FGSM.zero_thresh">
 <span class="sig-name descname"><span class="pre">zero_thresh</span></span><a class="headerlink" href="#captum.robust.FGSM.zero_thresh" title="Link to this definition">¶</a></dt>
@@ -90,6 +100,7 @@ as zero. Can be modified for custom use cases if necessary.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="captum.robust.FGSM.perturb">
 <span class="sig-name descname"><span class="pre">perturb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_forward_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targeted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/captum/robust/_core/fgsm.html#FGSM.perturb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#captum.robust.FGSM.perturb" title="Link to this definition">¶</a></dt>
@@ -161,7 +172,9 @@ corresponding sized tensors is returned.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="pgd">
 <h2>PGD<a class="headerlink" href="#pgd" title="Link to this heading">¶</a></h2>
@@ -198,10 +211,10 @@ computed. The loss function should take in outputs of the
 model and labels, and return the loss for each input tensor.
 The default loss function is negative log.</p></li>
 <li><p><strong>lower_bound</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em>, </em><em>optional</em>) – Lower bound of input values.
-Default: <code class="docutils literal notranslate"><span class="pre">float("-inf")</span></code></p></li>
+Default: <code class="docutils literal notranslate"><span class="pre">float(&quot;-inf&quot;)</span></code></p></li>
 <li><p><strong>upper_bound</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em>, </em><em>optional</em>) – Upper bound of input values.
 e.g. image pixels must be in the range 0-255
-Default: <code class="docutils literal notranslate"><span class="pre">float("inf")</span></code></p></li>
+Default: <code class="docutils literal notranslate"><span class="pre">float(&quot;inf&quot;)</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -217,6 +230,7 @@ custom use cases if necessary.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="captum.robust.PGD.perturb">
 <span class="sig-name descname"><span class="pre">perturb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_forward_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targeted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Linf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/captum/robust/_core/pgd.html#PGD.perturb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#captum.robust.PGD.perturb" title="Link to this definition">¶</a></dt>
@@ -297,7 +311,9 @@ corresponding sized tensors is returned.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="attack-comparator">
 <h2>Attack Comparator<a class="headerlink" href="#attack-comparator" title="Link to this heading">¶</a></h2>
@@ -378,6 +394,7 @@ Default: <code class="docutils literal notranslate"><span class="pre">None</span
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="captum.robust.AttackComparator.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_forward_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perturbations_per_eval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/captum/robust/_core/metrics/attack_comparator.html#AttackComparator.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#captum.robust.AttackComparator.evaluate" title="Link to this definition">¶</a></dt>
@@ -456,13 +473,13 @@ without any perturbations.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">jitter</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">ColorJitter</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">attack_metric</span><span class="o">.</span><span class="n">add_attack</span><span class="p">(</span><span class="n">random_rotation</span><span class="p">,</span> <span class="s2">"Random Rotation"</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">attack_metric</span><span class="o">.</span><span class="n">add_attack</span><span class="p">(</span><span class="n">random_rotation</span><span class="p">,</span> <span class="s2">&quot;Random Rotation&quot;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>                         <span class="n">num_attempts</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">attack_metric</span><span class="o">.</span><span class="n">add_attack</span><span class="p">((</span><span class="n">jitter</span><span class="p">,</span> <span class="s2">"Jitter"</span><span class="p">,</span> <span class="n">num_attempts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">attack_metric</span><span class="o">.</span><span class="n">add_attack</span><span class="p">(</span><span class="n">FGSM</span><span class="p">(</span><span class="n">resnet18</span><span class="p">),</span> <span class="s2">"FGSM 0.1"</span><span class="p">,</span> <span class="n">num_attempts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">attack_metric</span><span class="o">.</span><span class="n">add_attack</span><span class="p">((</span><span class="n">jitter</span><span class="p">,</span> <span class="s2">&quot;Jitter&quot;</span><span class="p">,</span> <span class="n">num_attempts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">attack_metric</span><span class="o">.</span><span class="n">add_attack</span><span class="p">(</span><span class="n">FGSM</span><span class="p">(</span><span class="n">resnet18</span><span class="p">),</span> <span class="s2">&quot;FGSM 0.1&quot;</span><span class="p">,</span> <span class="n">num_attempts</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>                         <span class="n">apply_before_preproc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>                         <span class="n">attack_kwargs</span><span class="o">=</span><span class="p">{</span><span class="n">epsilon</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
-<span class="gp">&gt;&gt;&gt; </span>                         <span class="n">additional_args</span><span class="o">=</span><span class="p">[</span><span class="s2">"targets"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span>                         <span class="n">additional_args</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;targets&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
@@ -470,6 +487,7 @@ without any perturbations.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="captum.robust.AttackComparator.reset">
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/captum/robust/_core/metrics/attack_comparator.html#AttackComparator.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#captum.robust.AttackComparator.reset" title="Link to this definition">¶</a></dt>
@@ -480,6 +498,7 @@ without any perturbations.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="captum.robust.AttackComparator.summary">
 <span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/captum/robust/_core/metrics/attack_comparator.html#AttackComparator.summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#captum.robust.AttackComparator.summary" title="Link to this definition">¶</a></dt>
@@ -507,7 +526,9 @@ per batch.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="min-param-perturbation">
 <h2>Min Param Perturbation<a class="headerlink" href="#min-param-perturbation" title="Link to this heading">¶</a></h2>
@@ -660,7 +681,7 @@ prediction.</p>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">min_pert</span> <span class="o">=</span> <span class="n">MinParamPerturbation</span><span class="p">(</span><span class="n">forward_func</span><span class="o">=</span><span class="n">resnet18</span><span class="p">,</span>
 <span class="go">                                   attack=gaussian_noise,</span>
-<span class="go">                                   arg_name="std",</span>
+<span class="go">                                   arg_name=&quot;std&quot;,</span>
 <span class="go">                                   arg_min=0.0,</span>
 <span class="go">                                   arg_max=2.0,</span>
 <span class="go">                                   arg_step=0.01,</span>
@@ -670,22 +691,36 @@ prediction.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 </section>
-</div>
-</div>
-</div>
-<div aria-label="Main" class="sphinxsidebar" role="navigation">
-<div class="sphinxsidebarwrapper">
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="index.html">Captum</a></h1>
-<search id="searchbox" role="search" style="display: none">
-<div class="searchformwrapper">
-<form action="search.html" class="search" method="get">
-<input aria-labelledby="searchlabel" autocapitalize="off" autocomplete="off" autocorrect="off" name="q" placeholder="Search" spellcheck="false" type="text"/>
-<input type="submit" value="Go"/>
-</form>
-</div>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
@@ -709,45 +744,38 @@ prediction.</p>
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="base_classes.html">Base Classes</a></li>
 </ul>
+
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-<li><a href="index.html">Documentation overview</a><ul>
-<li>Previous: <a href="metrics.html" title="previous chapter">Metrics</a></li>
-<li>Next: <a href="concept.html" title="next chapter">Concept-based Interpretability</a></li>
-</ul></li>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="metrics.html" title="previous chapter">Metrics</a></li>
+      <li>Next: <a href="concept.html" title="next chapter">Concept-based Interpretability</a></li>
+  </ul></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="clearer"></div>
-</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footerSection"><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div class="footerSection"><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/pytorch/captum" data-count-href="https://github.com/pytorch/captum/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star Captum on GitHub">captum</a></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright"> Copyright © 2026 Meta Platforms, Inc.</section><script>
-            (function() {
-              var BAD_BASE = '/captum/';
-              if (window.location.origin !== 'https://captum.ai') {
-                var pathname = window.location.pathname;
-                var newPathname = pathname.slice(pathname.indexOf(BAD_BASE) === 0 ? BAD_BASE.length : 1);
-                var newLocation = 'https://captum.ai/' + newPathname;
-                console.log('redirecting to ' + newLocation);
-                window.location.href = newLocation;
-              }
-            })();
-          </script></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
-                document.addEventListener('keyup', function(e) {
-                  if (e.target !== document.body) {
-                    return;
-                  }
-                  // keyCode for '/' (slash)
-                  if (e.keyCode === 191) {
-                    const search = document.getElementById('search_input_react');
-                    search && search.focus();
-                  }
-                });
-              </script><script>
-              var search = docsearch({
-                
-                apiKey: '207c27d819f967749142d8611de7cb19',
-                indexName: 'captum',
-                inputSelector: '#search_input_react'
-              });
-            </script></body></html>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      <a href="_sources/robust.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
